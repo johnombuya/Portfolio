@@ -1,0 +1,432 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <!-- Required meta tags -->
+        <meta charset="utf-8" />
+        <meta
+            name="viewport"
+            content="width=device-width, initial-scale=1, shrink-to-fit=no"
+        />
+
+        <link
+            rel="icon"
+            href="{{ url_for('static', filename='assets/favicon.ico') }}"
+        />
+
+        <!-- Bootstrap CSS -->
+        <link
+            rel="stylesheet"
+            href="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/css/bootstrap.min.css"
+            integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm"
+            crossorigin="anonymous"
+        />
+
+        <!-- Google Fonts -->
+        <link rel="preconnect" href="https://fonts.googleapis.com" />
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+        <link
+            href="https://fonts.googleapis.com/css2?family=Ubuntu:wght@300;400&display=swap"
+            rel="stylesheet"
+        />
+        <link rel="preconnect" href="https://fonts.googleapis.com" />
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+        <link
+            href="https://fonts.googleapis.com/css2?family=Montserrat:wght@100;400;900&display=swap"
+            rel="stylesheet"
+        />
+
+        <!-- External CSS -->
+        <link
+            rel="stylesheet"
+            href="{{ url_for('static', filename='css/style.css') }}"
+        />
+
+        <!-- Font Awesome Script -->
+        <script
+            src="https://kit.fontawesome.com/321779f561.js"
+            crossorigin="anonymous"
+        ></script>
+
+        <style>
+            /* Title */
+            #title {
+                background-color: #000000;
+                color: white;
+                height: 450px;
+            }
+
+            h1 {
+                font-family: 'Montserrat', sans-serif;
+                font-size: 2rem;
+                line-height: 1.5;
+                font-weight: 900;
+            }
+
+            .container-fluid {
+                padding: 3% 15%;
+            }
+
+            /* Navigation bar */
+            .navbar {
+                padding-bottom: 0.5rem;
+                padding-left: 0;
+            }
+            .nav-item {
+                padding: 0 18px;
+            }
+            .favicon-nav {
+                width: 25%;
+                padding-bottom: 5px;
+                padding-right: 3px;
+            }
+            .logo-text {
+                font-size: x-large;
+            }
+            .carousel-item > img {
+                position: relative;
+                top: -75px;
+                width: 100%;
+            }
+            .second_sec {
+                margin-top: 20px;
+            }
+            #btn-back-to-top {
+                position: fixed;
+                bottom: 20px;
+                right: 20px;
+                display: none;
+            }
+            /* .btn {
+                display: inline-block;
+                background-color: var(--color-primary);
+                font-size: 1.6rem;
+                font-family: inherit;
+                font-weight: 500;
+                border: none;
+                padding: 1.25rem 4.5rem;
+                border-radius: 10rem;
+                cursor: pointer;
+                transition: all 0.3s;
+            } */
+            .btn {
+                padding: 0.45rem 2rem;
+                border-radius: 10rem;
+            }
+
+            /* COOKIE MESSAGE */
+            .cookie-message {
+                display: flex;
+                align-items: center;
+                justify-content: space-evenly;
+                width: 100%;
+                background-color: white;
+                color: #bbb;
+                font-size: 1.5rem;
+                font-weight: 400;
+            }
+        </style>
+        <!-- External CSS -->
+        <title>Ombuya's Portfolio 2.0</title>
+    </head>
+    <body>
+        <!-- Title section -->
+        <section id="title">
+            <div class="container-fluid">
+                <nav class="navbar navbar-expand-lg navbar-dark bg-transparent">
+                    <a class="navbar-brand" href="{{ url_for('home') }}"
+                        ><img
+                            src="{{ url_for('static', filename='assets/favicon.ico') }}"
+                            class="favicon-nav"
+                        /><span class="logo-text">mbuya</span></a
+                    >
+                    <button
+                        class="navbar-toggler"
+                        type="button"
+                        data-toggle="collapse"
+                        data-target="#navbarNav"
+                        aria-controls="navbarNav"
+                        aria-expanded="false"
+                        aria-label="Toggle navigation"
+                    >
+                        <span class="navbar-toggler-icon"></span>
+                    </button>
+                    <div class="collapse navbar-collapse" id="navbarNav">
+                        <ul class="navbar-nav ml-auto">
+                            <li class="nav-item active">
+                                <a class="nav-link" href="{{ url_for('home') }}"
+                                    >Home
+                                    <span class="sr-only">(current)</span></a
+                                >
+                            </li>
+                            <li class="nav-item">
+                                <a
+                                    class="nav-link"
+                                    href="{{ url_for('about') }}"
+                                    >About</a
+                                >
+                            </li>
+                            <li class="nav-item">
+                                <a
+                                    class="nav-link"
+                                    href="{{ url_for('contact') }}"
+                                    >Contact</a
+                                >
+                            </li>
+                        </ul>
+                    </div>
+                </nav>
+            </div>
+            <div class="container-fluid">
+                <div>
+                    <h1>
+                        Hello, I'm John Ombuya,<br /><span
+                            style="font-family: Ubuntu"
+                            >Software & Web Developer.</span
+                        >
+                    </h1>
+                    <!-- <p><a href=""></a></p> -->
+                    <button
+                        class="btn btn--text btn--scroll-to btn-outline-primary"
+                    >
+                        View skills &DownArrow;
+                    </button>
+                </div>
+            </div>
+        </section>
+        <section class="second_sec">
+            <div class="container-fluid">
+                <p>
+                    Inquisitive software engineering student with skills in
+                    creative and critical thinking and a strong foundation in
+                    logic and programming. I am eager to grow through the
+                    experience offered by your company, while leveraging my
+                    skills in collaboration, communication, and software
+                    development.
+                </p>
+            </div>
+        </section>
+        <!-- Skills section -->
+        <section class="third_sec">
+            <div class="container-fluid">
+                <h1>SKILLS</h1>
+                <div class="row">
+                    <div class="col-sm">
+                        <div class="progress">
+                            <div
+                                class="progress-bar progress-bar-striped progress-bar-animated"
+                                role="progressbar"
+                                style="width: 92%"
+                                aria-valuenow="92"
+                                aria-valuemin="0"
+                                aria-valuemax="100"
+                            >
+                                92%
+                            </div>
+                        </div>
+                        <p>Python</p>
+                        <div class="progress">
+                            <div
+                                class="progress-bar progress-bar-striped progress-bar-animated"
+                                role="progressbar"
+                                style="width: 90%"
+                                aria-valuenow="90"
+                                aria-valuemin="0"
+                                aria-valuemax="100"
+                            >
+                                90%
+                            </div>
+                        </div>
+                        <p>MySQL</p>
+                        <div class="progress">
+                            <div
+                                class="progress-bar progress-bar-striped progress-bar-animated"
+                                role="progressbar"
+                                style="width: 87%"
+                                aria-valuenow="87"
+                                aria-valuemin="0"
+                                aria-valuemax="100"
+                            >
+                                87%
+                            </div>
+                        </div>
+                        <p>HTML & CSS</p>
+                        <div class="progress">
+                            <div
+                                class="progress-bar progress-bar-striped progress-bar-animated"
+                                role="progressbar"
+                                style="width: 80%"
+                                aria-valuenow="80"
+                                aria-valuemin="0"
+                                aria-valuemax="100"
+                            >
+                                80%
+                            </div>
+                        </div>
+                        <p>Visual Basic</p>
+                        <div class="progress">
+                            <div
+                                class="progress-bar progress-bar-striped progress-bar-animated"
+                                role="progressbar"
+                                style="width: 80%"
+                                aria-valuenow="80"
+                                aria-valuemin="0"
+                                aria-valuemax="100"
+                            >
+                                80%
+                            </div>
+                        </div>
+                        <p>JavaScript</p>
+                    </div>
+                    <div class="col-sm">
+                        <div class="progress">
+                            <div
+                                class="progress-bar progress-bar-striped progress-bar-animated"
+                                role="progressbar"
+                                style="width: 80%"
+                                aria-valuenow="80"
+                                aria-valuemin="0"
+                                aria-valuemax="100"
+                            >
+                                80%
+                            </div>
+                        </div>
+                        <p>Data Science - Python</p>
+                        <div class="progress">
+                            <div
+                                class="progress-bar progress-bar-striped progress-bar-animated"
+                                role="progressbar"
+                                style="width: 80%"
+                                aria-valuenow="80"
+                                aria-valuemin="0"
+                                aria-valuemax="100"
+                            >
+                                80%
+                            </div>
+                        </div>
+                        <p>Java</p>
+                        <div class="progress">
+                            <div
+                                class="progress-bar progress-bar-striped progress-bar-animated"
+                                role="progressbar"
+                                style="width: 70%"
+                                aria-valuenow="70"
+                                aria-valuemin="0"
+                                aria-valuemax="100"
+                            >
+                                70%
+                            </div>
+                        </div>
+                        <p>C++</p>
+                        <div class="progress">
+                            <div
+                                class="progress-bar progress-bar-striped progress-bar-animated"
+                                role="progressbar"
+                                style="width: 70%"
+                                aria-valuenow="70"
+                                aria-valuemin="0"
+                                aria-valuemax="100"
+                            >
+                                70%
+                            </div>
+                        </div>
+                        <p>C</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+        <!-- Portfolio section-->
+        <section id="portfolio">
+            <div class="container mt-3">
+                <h1 class="text-center">PORTFOLIO</h1>
+                <div class="row">
+                    {% for project in projects %}
+                    <div class="col-lg-4 mt-4">
+                        <div class="card portfolioContent">
+                            <img
+                                class="card-img-top"
+                                src="{{ project.img_url }}"
+                                alt="Card image"
+                                style="width: 100%"
+                            />
+                            <div class="card-body">
+                                <h4 class="card-title">{{ project.h4 }}</h4>
+                                <h6><i>{{ project.h6 }}</i></h6>
+                                <hr />
+                                <p class="card-text">{{ project.p }}</p>
+                                <div class="text-center">
+                                    <a
+                                        href="{{ project.link }}"
+                                        class="btn btn-outline-primary"
+                                        ><i class="fa-brands fa-github"></i>
+                                        Link</a
+                                    >
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    {% endfor %}
+                </div>
+                <br />
+                <!-- Back to top button -->
+                <button
+                    type="button"
+                    class="btn btn-outline-primary btn-floating btn-lg"
+                    id="btn-back-to-top"
+                >
+                    <i class="fas fa-arrow-up"></i>
+                </button>
+            </div>
+        </section>
+
+        <!-- Script for Back to Top button -->
+        <script>
+            //Get the button
+            let mybutton = document.getElementById('btn-back-to-top');
+
+            // When the user scrolls down 20px from the top of the document, show the button
+            window.onscroll = function () {
+                scrollFunction();
+            };
+
+            function scrollFunction() {
+                if (
+                    document.body.scrollTop > 20 ||
+                    document.documentElement.scrollTop > 20
+                ) {
+                    mybutton.style.display = 'block';
+                } else {
+                    mybutton.style.display = 'none';
+                }
+            }
+            // When the user clicks on the button, scroll to the top of the document
+            mybutton.addEventListener('click', backToTop);
+
+            function backToTop() {
+                window.scrollTo({
+                    left: 0,
+                    top: 0,
+                    behavior: 'smooth',
+                });
+            }
+        </script>
+
+        <!-- Optional JavaScript -->
+        <!-- jQuery first, then Popper.js, then Bootstrap JS -->
+        <script
+            src="https://code.jquery.com/jquery-3.2.1.slim.min.js"
+            integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN"
+            crossorigin="anonymous"
+        ></script>
+        <script
+            src="https://cdn.jsdelivr.net/npm/popper.js@1.12.9/dist/umd/popper.min.js"
+            integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q"
+            crossorigin="anonymous"
+        ></script>
+        <script
+            src="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/js/bootstrap.min.js"
+            integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl"
+            crossorigin="anonymous"
+        ></script>
+        <script src="{{ url_for('static', filename='script.js') }}"></script>
+    </body>
+</html>
