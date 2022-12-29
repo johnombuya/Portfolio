@@ -83,13 +83,6 @@
                                     >About</a
                                 >
                             </li>
-                            <li class="nav-item">
-                                <a
-                                    class="nav-link"
-                                    href="{{ url_for('contact') }}"
-                                    >Contact</a
-                                >
-                            </li>
                         </ul>
                     </div>
                 </nav>
@@ -296,6 +289,8 @@
             </div>
         </section>
 
+        {% include "footer.html" %}
+
         <!-- Optional JavaScript -->
         <!-- jQuery first, then Popper.js, then Bootstrap JS -->
         <script
@@ -314,9 +309,12 @@
             crossorigin="anonymous"
         ></script>
         <!-- Custom js -->
-        <script src="{{ url_for('static' , filename='script.js') }}"></script>
+        <script src="{{ url_for('static' , filename='js/script.js') }}"></script>
 
         <!-- Loader js -->
-        <script src="{{ url_for('static' , filename='loader.js') }}"></script>
+        <script src="{{ url_for('static' , filename='js/loader.js') }}"></script>
+
+        <!-- Back to Top js -->
+        <script src="{{ url_for('static' , filename='js/backtotop.js') }}"></script>
     </body>
 </html>

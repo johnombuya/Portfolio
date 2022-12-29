@@ -60,14 +60,6 @@
                 padding: 3% 15%;
             }
 
-            .carousel-item > img {
-                position: relative;
-                top: -75px;
-                width: 100%;
-            }
-            .second_sec {
-                margin-top: 20px;
-            }
             div > img {
                 width: 200px;
                 height: 200px;
@@ -113,11 +105,6 @@
                                 >About</a
                             >
                         </li>
-                        <li class="nav-item">
-                            <a class="nav-link" href="{{ url_for('contact') }}"
-                                >Contact</a
-                            >
-                        </li>
                     </ul>
                 </div>
             </nav>
@@ -130,7 +117,10 @@
             />
             <p style="margin-top: 20px" class="text-center">
                 <b>John Ombuya</b> is a
-                <b>20 year old, KCA University Software Engineering student</b>
+                <b
+                    ><span class="age">20</span> year old, KCA University
+                    Software Engineering student</b
+                >
                 who has worked with
                 <b>HTML and CSS, Python, JavaScript, Java, C++, and C.</b> He is
                 also enamored with exploring new foods and all forms of art.
@@ -198,6 +188,7 @@
                 <i class="fas fa-arrow-up"></i>
             </button>
         </div>
+        {% include "footer.html" %}
 
         <!-- Optional JavaScript -->
         <!-- jQuery first, then Popper.js, then Bootstrap JS -->
@@ -216,11 +207,13 @@
             integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl"
             crossorigin="anonymous"
         ></script>
-
         <!-- Custom js -->
-        <script src="{{ url_for('static' , filename='custom.js') }}"></script>
+        <script src="{{ url_for('static' , filename='js/script.js') }}"></script>
 
         <!-- Loader js -->
-        <script src="{{ url_for('static' , filename='loader.js') }}"></script>
+        <script src="{{ url_for('static' , filename='js/loader.js') }}"></script>
+
+        <!-- Back to Top js -->
+        <script src="{{ url_for('static' , filename='js/backtotop.js') }}"></script>
     </body>
 </html>
