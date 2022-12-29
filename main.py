@@ -1,6 +1,5 @@
 from flask import Flask, render_template
 from flask_bootstrap import Bootstrap
-from flask_login import UserMixin, login_user, LoginManager, login_required, current_user, logout_user
 
 from portfolioManager import *
 

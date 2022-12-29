@@ -1,8 +1,11 @@
 'use-strict';
 
+/* ----------------------------------------------------------- */
+/*  INSERTING PROMISE DIV
+  /* ----------------------------------------------------------- */
+
 header = document.querySelector('.second_sec');
 
-//--------------------------- INSERTING PROMISE DIV --------------------------//
 // Creating and inserting elements
 const message = document.createElement('div');
 message.classList.add('cookie-message');
@@ -27,9 +30,10 @@ message.style.color = 'white';
 message.style.height =
     Number.parseFloat(getComputedStyle(message).height, 10) + 40 + 'px';
 
-//----------------------------------------------------------------------------//
+/* ----------------------------------------------------------- */
+/*  SCROLL TO SKILLS
+  /* ----------------------------------------------------------- */
 
-//-------------------------- SCROLL TO SKILLS --------------------------------//
 const btnScrollTo = document.querySelector('.btn--scroll-to');
 const section3 = document.querySelector('.third_sec');
 
@@ -49,3 +53,36 @@ btnScrollTo.addEventListener('click', function (e) {
 });
 
 //----------------------------------------------------------------------------//
+
+/* ----------------------------------------------------------- */
+/*  BACK TO TOP BUTTON
+  /* ----------------------------------------------------------- */
+
+//Get the button
+let mybutton = document.getElementById('btn-back-to-top');
+
+// When the user scrolls down 20px from the top of the document, show the button
+window.onscroll = function () {
+    scrollFunction();
+};
+
+function scrollFunction() {
+    if (
+        document.body.scrollTop > 20 ||
+        document.documentElement.scrollTop > 20
+    ) {
+        mybutton.style.display = 'block';
+    } else {
+        mybutton.style.display = 'none';
+    }
+}
+// When the user clicks on the button, scroll to the top of the document
+mybutton.addEventListener('click', backToTop);
+
+function backToTop() {
+    window.scrollTo({
+        left: 0,
+        top: 0,
+        behavior: 'smooth',
+    });
+}
