@@ -42,6 +42,30 @@
             crossorigin="anonymous"
         ></script>
 
+        <!-- Custom js -->
+        <script
+            defer
+            src="{{ url_for('static' , filename='js/script.js') }}"
+        ></script>
+
+        <!-- Loader js -->
+        <script
+            defer
+            src="{{ url_for('static' , filename='js/loader.js') }}"
+        ></script>
+
+        <!-- Back to Top js -->
+        <script
+            defer
+            src="{{ url_for('static' , filename='js/backtotop.js') }}"
+        ></script>
+
+        <!-- Fadeout -->
+        <script
+            defer
+            src="{{ url_for('static' , filename='js/fadeout.js') }}"
+        ></script>
+
         <!-- External CSS -->
         <title>Ombuya's Portfolio 2.0</title>
     </head>
@@ -119,176 +143,196 @@
         <!-- Skills section -->
         <section class="third_sec">
             <div class="container-fluid">
-                <h1>SKILLS</h1>
+                <h1>FAMILIAR WITH</h1>
                 <div class="row">
                     <div class="col-sm">
-                        <div class="progress">
-                            <div
-                                class="progress-bar progress-bar-striped progress-bar-animated"
-                                role="progressbar"
-                                style="width: 92%"
-                                aria-valuenow="92"
-                                aria-valuemin="0"
-                                aria-valuemax="100"
-                            >
-                                92%
-                            </div>
+                        <div class="border-icon d-flex mb-3">
+                            <span class="border rounded p-3">
+                                <i class="fab fa-python mr-2"></i>
+                                Python - Flask | BS4 | Selenium
+                            </span>
                         </div>
-                        <p>Python</p>
-                        <div class="progress">
-                            <div
-                                class="progress-bar progress-bar-striped progress-bar-animated"
-                                role="progressbar"
-                                style="width: 90%"
-                                aria-valuenow="90"
-                                aria-valuemin="0"
-                                aria-valuemax="100"
-                            >
-                                90%
-                            </div>
+                        <div class="border-icon d-flex mb-3">
+                            <span class="border rounded p-3">
+                                <i class="fab fa-node mr-2"></i>
+                                Node.js - Express.js | Jest
+                            </span>
                         </div>
-                        <p>MySQL</p>
-                        <div class="progress">
-                            <div
-                                class="progress-bar progress-bar-striped progress-bar-animated"
-                                role="progressbar"
-                                style="width: 87%"
-                                aria-valuenow="87"
-                                aria-valuemin="0"
-                                aria-valuemax="100"
-                            >
-                                87%
-                            </div>
-                        </div>
-                        <p>HTML & CSS</p>
-                        <div class="progress">
-                            <div
-                                class="progress-bar progress-bar-striped progress-bar-animated"
-                                role="progressbar"
-                                style="width: 80%"
-                                aria-valuenow="80"
-                                aria-valuemin="0"
-                                aria-valuemax="100"
-                            >
-                                80%
-                            </div>
-                        </div>
-                        <p>Visual Basic</p>
-                        <div class="progress">
-                            <div
-                                class="progress-bar progress-bar-striped progress-bar-animated"
-                                role="progressbar"
-                                style="width: 80%"
-                                aria-valuenow="80"
-                                aria-valuemin="0"
-                                aria-valuemax="100"
-                            >
-                                80%
-                            </div>
-                        </div>
-                        <p>JavaScript</p>
                     </div>
                     <div class="col-sm">
-                        <div class="progress">
-                            <div
-                                class="progress-bar progress-bar-striped progress-bar-animated"
-                                role="progressbar"
-                                style="width: 80%"
-                                aria-valuenow="80"
-                                aria-valuemin="0"
-                                aria-valuemax="100"
-                            >
-                                80%
-                            </div>
+                        <div class="border-icon d-flex mb-3">
+                            <span class="border rounded p-3">
+                                <i class="fa-brands fa-react"></i>
+                                React & React Native
+                            </span>
                         </div>
-                        <p>Data Science - Python</p>
-                        <div class="progress">
-                            <div
-                                class="progress-bar progress-bar-striped progress-bar-animated"
-                                role="progressbar"
-                                style="width: 80%"
-                                aria-valuenow="80"
-                                aria-valuemin="0"
-                                aria-valuemax="100"
-                            >
-                                80%
-                            </div>
+                        <div class="border-icon d-flex mb-3">
+                            <span class="border rounded p-3">
+                                <i class="fa-solid fa-database"></i>
+                                PostgreSQL, MySQL & SQLite
+                            </span>
                         </div>
-                        <p>Java</p>
-                        <div class="progress">
-                            <div
-                                class="progress-bar progress-bar-striped progress-bar-animated"
-                                role="progressbar"
-                                style="width: 70%"
-                                aria-valuenow="70"
-                                aria-valuemin="0"
-                                aria-valuemax="100"
-                            >
-                                70%
-                            </div>
+                    </div>
+                    <div class="col-sm">
+                        <div class="border-icon d-flex mb-3">
+                            <span class="border rounded p-3">
+                                <i
+                                    class="fa-solid fa-magnifying-glass-chart"
+                                ></i>
+                                Data Analytics & Visualization
+                            </span>
                         </div>
-                        <p>C++</p>
-                        <div class="progress">
-                            <div
-                                class="progress-bar progress-bar-striped progress-bar-animated"
-                                role="progressbar"
-                                style="width: 70%"
-                                aria-valuenow="70"
-                                aria-valuemin="0"
-                                aria-valuemax="100"
-                            >
-                                70%
-                            </div>
+                        <div class="border-icon d-flex mb-3">
+                            <span class="border rounded p-3">
+                                <i class="fab fa-unity mr-2"></i>
+                                Unity Game Development
+                            </span>
                         </div>
-                        <p>C</p>
                     </div>
                 </div>
             </div>
         </section>
-        <!-- Portfolio section-->
-        <section id="portfolio">
-            <div class="container mt-3">
-                <h1 class="text-center">PORTFOLIO</h1>
-                <div class="row">
-                    {% for project in projects %}
-                    <div class="col-lg-4 mt-4">
-                        <div class="card portfolioContent">
-                            <img
-                                class="card-img-top"
-                                src="{{ project.img_url }}"
-                                alt="Card image"
-                                style="width: 100%"
-                            />
-                            <div class="card-body">
-                                <h4 class="card-title">{{ project.h4 }}</h4>
-                                <h6><i>{{ project.h6 }}</i></h6>
-                                <hr />
-                                <p class="card-text">{{ project.p }}</p>
-                                <div class="text-center">
-                                    <a
-                                        href="{{ project.link }}"
-                                        target="_blank"
-                                        class="btn btn-outline-primary"
-                                        ><i class="fa-brands fa-github"></i>
-                                        Link</a
-                                    >
+
+        <!-- Tabs section for Portfolio and Certificates -->
+        <section id="tabs" class="container mt-3">
+            <ul class="nav nav-tabs" id="myTab" role="tablist">
+                <li class="nav-item" role="presentation">
+                    <a
+                        class="nav-link active"
+                        id="portfolio-tab"
+                        data-toggle="tab"
+                        href="#portfolio"
+                        role="tab"
+                        aria-controls="portfolio"
+                        aria-selected="true"
+                        >Portfolio</a
+                    >
+                </li>
+                <li class="nav-item" role="presentation">
+                    <a
+                        class="nav-link"
+                        id="certificates-tab"
+                        data-toggle="tab"
+                        href="#certificates"
+                        role="tab"
+                        aria-controls="certificates"
+                        aria-selected="false"
+                        >Certificates</a
+                    >
+                </li>
+            </ul>
+            <div class="tab-content" id="myTabContent">
+                <!-- Portfolio tab content -->
+                <div
+                    class="tab-pane fade show active"
+                    id="portfolio"
+                    role="tabpanel"
+                    aria-labelledby="portfolio-tab"
+                >
+                    <section class="third_sec">
+                        <!-- Portfolio section content here -->
+                        <!-- Portfolio section-->
+                        <section id="portfolio">
+                            <div class="container mt-3">
+                                <h1 class="text-center">PORTFOLIO</h1>
+                                <div class="row">
+                                    {% for project in projects %}
+                                    <div class="col-lg-4 mt-4">
+                                        <div class="card portfolioContent">
+                                            <img
+                                                class="card-img-top"
+                                                src="{{ project.img_url }}"
+                                                alt="Card image"
+                                                style="width: 100%"
+                                            />
+                                            <div class="card-body">
+                                                <h4 class="card-title">
+                                                    {{ project.h4 }}
+                                                </h4>
+                                                <h6><i>{{ project.h6 }}</i></h6>
+                                                <hr />
+                                                <p class="card-text">
+                                                    {{ project.p }}
+                                                </p>
+                                                <div class="text-center">
+                                                    <a
+                                                        href="{{ project.link }}"
+                                                        target="_blank"
+                                                        class="btn btn-outline-primary"
+                                                        ><i
+                                                            class="fa-brands fa-github"
+                                                        ></i>
+                                                        Link</a
+                                                    >
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    {% endfor %}
+                                </div>
+                                <br />
+                            </div>
+                        </section>
+                    </section>
+                </div>
+                <!-- Certificates tab content -->
+                <div
+                    class="tab-pane fade"
+                    id="certificates"
+                    role="tabpanel"
+                    aria-labelledby="certificates-tab"
+                >
+                    <section id="certificates">
+                        <!-- Certificates section content here -->
+                        <!-- Certificates section-->
+                        <section id="portfolio">
+                            <div class="container mt-3">
+                                <h1 class="text-center">CERTIFICATES</h1>
+                                <div class="row">
+                                    <div class="col-lg-4 mt-4 mb-4">
+                                        <img
+                                            src="../static/assets/certificates/johnombuya-100-days-python.jpg"
+                                            class="img-fluid"
+                                            alt="johnombuya-100-days-python"
+                                        />
+                                    </div>
+                                    <div class="col-lg-4 mt-4 mb-4">
+                                        <img
+                                            src="../static/assets/certificates/johnombuya-dayliff.jpg"
+                                            class="img-fluid"
+                                            alt="johnombuya-dayliff"
+                                        />
+                                    </div>
+                                    <div class="col-lg-4 mt-4 mb-4">
+                                        <img
+                                            src="../static/assets/certificates/johnombuya-codsoft.jpg"
+                                            class="img-fluid"
+                                            alt="johnombuya-codsoft"
+                                        />
+                                    </div>
+                                    <div class="col-lg-4 mt-4 mb-4">
+                                        <img
+                                            src="../static/assets/certificates/johnombuya-edureka.jpg"
+                                            class="img-fluid"
+                                            alt="johnombuya-edureka"
+                                        />
+                                    </div>
                                 </div>
                             </div>
-                        </div>
-                    </div>
-                    {% endfor %}
+                        </section>
+                    </section>
                 </div>
-                <br />
-                <!-- Back to top button -->
-                <button
-                    type="button"
-                    class="btn btn-outline-primary btn-floating btn-lg"
-                    id="btn-back-to-top"
-                >
-                    <i class="fas fa-arrow-up"></i>
-                </button>
             </div>
         </section>
+
+        <!-- Back to top button -->
+        <button
+            type="button"
+            class="btn btn-outline-primary btn-floating btn-lg"
+            id="btn-back-to-top"
+        >
+            <i class="fas fa-arrow-up"></i>
+        </button>
 
         {% include "footer.html" %}
 
@@ -309,16 +353,5 @@
             integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl"
             crossorigin="anonymous"
         ></script>
-        <!-- Custom js -->
-        <script src="{{ url_for('static' , filename='js/script.js') }}"></script>
-
-        <!-- Loader js -->
-        <script src="{{ url_for('static' , filename='js/loader.js') }}"></script>
-
-        <!-- Back to Top js -->
-        <script src="{{ url_for('static' , filename='js/backtotop.js') }}"></script>
-
-        <!-- Fadeout -->
-        <script src="{{ url_for('static' , filename='js/fadeout.js') }}"></script>
     </body>
 </html>

@@ -1,21 +1,16 @@
-/* ----------------------------------------------------------- */
-/*  AGE
-  /* ----------------------------------------------------------- */
+/* Age */
+if (document.querySelector('.age')) {
+    document.querySelector('.age').textContent =
+        new Date().getFullYear() - 2002;
+}
 
-age = new Date().getFullYear() - 2002;
-document.querySelector('.age').textContent = age;
-
-/* ----------------------------------------------------------- */
-/*  SCROLL TO SKILLS
-  /* ----------------------------------------------------------- */
-
+/* Scroll to Skills */
 const btnScrollTo = document.querySelector('.btn--scroll-to');
 const section3 = document.querySelector('.third_sec');
 
 btnScrollTo.addEventListener('click', function (e) {
     // First we need to get the coordinates
     const s3coords = section3.getBoundingClientRect();
-    // console.log(s3coords); // Logs the coordinates
 
     window.scrollTo({
         left: s3coords.left + window.pageXOffset,
@@ -23,6 +18,6 @@ btnScrollTo.addEventListener('click', function (e) {
         behavior: 'smooth',
     });
 
-    //   // More modern way to implement this
-    //   section3.scrollIntoView({ behavior: 'smooth' });
+    // More modern way to implement this
+    // section3.scrollIntoView({ behavior: 'smooth' });
 });
