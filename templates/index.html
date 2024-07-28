@@ -289,34 +289,16 @@
                             <div class="container mt-3">
                                 <h1 class="text-center">CERTIFICATES</h1>
                                 <div class="row">
+                                    {% for certificate_path in certificate_paths
+                                    %}
                                     <div class="col-lg-4 mt-4 mb-4">
                                         <img
-                                            src="../static/assets/certificates/johnombuya-100-days-python.jpg"
+                                            src="{{ certificate_path }}"
                                             class="img-fluid"
-                                            alt="johnombuya-100-days-python"
+                                            alt="{{ certificate_path.split('/')[-1] }}"
                                         />
                                     </div>
-                                    <div class="col-lg-4 mt-4 mb-4">
-                                        <img
-                                            src="../static/assets/certificates/johnombuya-dayliff.jpg"
-                                            class="img-fluid"
-                                            alt="johnombuya-dayliff"
-                                        />
-                                    </div>
-                                    <div class="col-lg-4 mt-4 mb-4">
-                                        <img
-                                            src="../static/assets/certificates/johnombuya-codsoft.jpg"
-                                            class="img-fluid"
-                                            alt="johnombuya-codsoft"
-                                        />
-                                    </div>
-                                    <div class="col-lg-4 mt-4 mb-4">
-                                        <img
-                                            src="../static/assets/certificates/johnombuya-edureka.jpg"
-                                            class="img-fluid"
-                                            alt="johnombuya-edureka"
-                                        />
-                                    </div>
+                                    {% endfor %}
                                 </div>
                             </div>
                         </section>
