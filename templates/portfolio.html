@@ -1,63 +1,166 @@
 <section id="portfolio" class="py-20">
     <h2 class="text-3xl font-bold mb-8 text-center">Portfolio</h2>
-    <div class="mb-4 border-b border-gray-200 dark:border-gray-700 flex justify-center">
-        <ul class="flex flex-wrap -mb-px text-sm font-medium text-center" id="default-tab" role="tablist">
+    <div
+        class="mb-4 border-b border-gray-200 dark:border-gray-700 flex justify-center"
+    >
+        <ul
+            class="flex flex-wrap -mb-px text-sm font-medium text-center"
+            id="default-tab"
+            role="tablist"
+        >
             <li class="mr-2" role="presentation">
-                <button class="inline-block p-4 border-b-2 rounded-t-lg focus:outline-none" id="projects-tab" data-target="#projects-carousel" type="button" role="tab" aria-controls="projects" aria-selected="true">Projects</button>
+                <button
+                    class="inline-block p-4 border-b-2 rounded-t-lg focus:outline-none"
+                    id="projects-tab"
+                    data-target="#projects-carousel"
+                    type="button"
+                    role="tab"
+                    aria-controls="projects"
+                    aria-selected="true"
+                >
+                    Projects
+                </button>
             </li>
             <li class="mr-2" role="presentation">
-                <button class="inline-block p-4 border-b-2 rounded-t-lg hover:text-gray-600 hover:border-gray-300 dark:hover:text-gray-300 focus:outline-none" id="certificates-tab" data-target="#certificates-carousel" type="button" role="tab" aria-controls="certificates" aria-selected="false">Certificates</button>
+                <button
+                    class="inline-block p-4 border-b-2 rounded-t-lg hover:text-gray-600 hover:border-gray-300 dark:hover:text-gray-300 focus:outline-none"
+                    id="certificates-tab"
+                    data-target="#certificates-carousel"
+                    type="button"
+                    role="tab"
+                    aria-controls="certificates"
+                    aria-selected="false"
+                >
+                    Certificates
+                </button>
             </li>
         </ul>
     </div>
 
     <div id="default-tab-content">
         <!-- Projects Carousel -->
-        <div class="p-4 rounded-lg bg-gray-50 dark:bg-gray-800" id="projects-carousel" role="tabpanel" aria-labelledby="projects-tab">
+        <div
+            class="p-4 rounded-lg bg-gray-50 dark:bg-gray-800"
+            id="projects-carousel"
+            role="tabpanel"
+            aria-labelledby="projects-tab"
+        >
             <div class="relative overflow-hidden">
-                <div id="projects-slider" class="flex transition-transform duration-500 ease-in-out">
-                    <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-4">
+                <div
+                    id="projects-slider"
+                    class="flex transition-transform duration-500 ease-in-out"
+                >
+                    <div
+                        class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-4"
+                    >
                         {% for project in projects %}
-                        <a href="{ project.img_url }" class="shadow-md duration-300 hover:scale-105 hover:shadow-xl block max-w-sm p-6 bg-white border border-gray-200 rounded-lg shadow hover:bg-gray-100 dark:bg-gray-800 dark:border-gray-700 dark:hover:bg-gray-700">
+                        <a
+                            href="{ project.img_url }"
+                            class="shadow-md duration-300 hover:scale-105 hover:shadow-xl block max-w-sm p-6 bg-white border border-gray-200 rounded-lg shadow hover:bg-gray-100 dark:bg-gray-800 dark:border-gray-700 dark:hover:bg-gray-700"
+                        >
                             <div>
-                                <img src="{{ project.img_url }}" alt="Project 1" class="object-contain rounded-lg mb-4 h-full w-full" />
+                                <img
+                                    src="{{ project.img_url }}"
+                                    alt="Project 1"
+                                    class="object-contain rounded-lg mb-4 h-full w-full"
+                                />
                             </div>
-                            <h5 class="mb-2 text-2xl font-bold tracking-tight text-gray-900 dark:text-white">{{ project.h4 }}</h5>
-                            <h5 class="mb-2 font-bold tracking-tight text-gray-400 dark:text-white">{{ project.h6 }}</h5>
-                            <p class="font-normal text-gray-700 dark:text-gray-400">{{ project.p }}</p>
+                            <h5
+                                class="mb-2 text-2xl font-bold tracking-tight text-gray-900 dark:text-white"
+                            >
+                                {{ project.h4 }}
+                            </h5>
+                            <h5
+                                class="mb-2 font-bold tracking-tight text-gray-400 dark:text-white"
+                            >
+                                {{ project.h6 }}
+                            </h5>
+                            <p
+                                class="font-normal text-gray-700 dark:text-gray-400"
+                            >
+                                {{ project.p }}
+                            </p>
                         </a>
                         {% endfor %}
-                    <!-- Repeat 11 more projects for example (total 12 items) -->
+                        <!-- Repeat 11 more projects for example (total 12 items) -->
                     </div>
                 </div>
                 <!-- Carousel Controls -->
-                <button id="prev-projects" class="absolute top-1/2 -left-4 transform -translate-y-1/2 bg-gray-500 text-white p-2 rounded-full hover:bg-gray-700 focus:outline-none">❮</button>
-                <button id="next-projects" class="absolute top-1/2 -right-4 transform -translate-y-1/2 bg-gray-500 text-white p-2 rounded-full hover:bg-gray-700 focus:outline-none">❯</button>
+                <button
+                    id="prev-projects"
+                    class="absolute top-1/2 -left-4 transform -translate-y-1/2 bg-gray-500 text-white p-2 rounded-full hover:bg-gray-700 focus:outline-none"
+                >
+                    ❮
+                </button>
+                <button
+                    id="next-projects"
+                    class="absolute top-1/2 -right-4 transform -translate-y-1/2 bg-gray-500 text-white p-2 rounded-full hover:bg-gray-700 focus:outline-none"
+                >
+                    ❯
+                </button>
             </div>
         </div>
 
         <!-- Certificates Carousel (hidden by default) -->
-        <div class="hidden p-4 rounded-lg bg-gray-50 dark:bg-gray-800" id="certificates-carousel" role="tabpanel" aria-labelledby="certificates-tab">
+        <div
+            class="hidden p-4 rounded-lg bg-gray-50 dark:bg-gray-800"
+            id="certificates-carousel"
+            role="tabpanel"
+            aria-labelledby="certificates-tab"
+        >
             <div class="relative overflow-hidden">
-                <div id="certificates-slider" class="flex transition-transform duration-500 ease-in-out">
-                    <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-4">
+                <div
+                    id="certificates-slider"
+                    class="flex transition-transform duration-500 ease-in-out"
+                >
+                    <div
+                        class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-4"
+                    >
                         {% for certificate_path in certificate_paths %}
-                        <a href="#" class="flex flex-col items-center bg-white border border-gray-200 rounded-lg shadow md:flex-row md:max-w-xl hover:bg-gray-100 dark:border-gray-700 dark:bg-gray-800 dark:hover:bg-gray-700">
+                        <a
+                            href="#"
+                            class="flex flex-col items-center bg-white border border-gray-200 rounded-lg shadow md:flex-row md:max-w-xl hover:bg-gray-100 dark:border-gray-700 dark:bg-gray-800 dark:hover:bg-gray-700"
+                        >
                             <div>
-                                <img class="object-cover h-full w-full rounded-t-lg h-96 md:h-auto md:w-48 md:rounded-none md:rounded-s-lg p-4" src="{{ certificate_path }}" alt="">
+                                <img
+                                    class="object-cover h-full w-full rounded-t-lg h-96 md:h-auto md:w-48 md:rounded-none md:rounded-s-lg p-4"
+                                    src="{{ certificate_path }}"
+                                    alt=""
+                                />
                             </div>
-                            <div class="flex flex-col justify-between p-4 leading-normal">
-                                <h5 class="mb-2 text-1xl font-bold tracking-tight text-gray-900 dark:text-white">Stanford Data Ocean</h5>
-                                <p class="mb-3 font-normal text-gray-700 dark:text-gray-400">Awarded for completing a course or achieving a milestone..</p>
+                            <div
+                                class="flex flex-col justify-between p-4 leading-normal"
+                            >
+                                <h5
+                                    class="mb-2 text-1xl font-bold tracking-tight text-gray-900 dark:text-white"
+                                >
+                                    Stanford Data Ocean
+                                </h5>
+                                <p
+                                    class="mb-3 font-normal text-gray-700 dark:text-gray-400"
+                                >
+                                    Awarded for completing a course or achieving
+                                    a milestone..
+                                </p>
                             </div>
                         </a>
                         {% endfor %}
-                    <!-- Repeat 11 more certificates for example (total 12 items) -->
+                        <!-- Repeat 11 more certificates for example (total 12 items) -->
                     </div>
                 </div>
                 <!-- Carousel Controls -->
-                <button id="prev-certificates" class="absolute top-1/2 -left-4 transform -translate-y-1/2 bg-gray-500 text-white p-2 rounded-full hover:bg-gray-700 focus:outline-none">❮</button>
-                <button id="next-certificates" class="absolute top-1/2 -right-4 transform -translate-y-1/2 bg-gray-500 text-white p-2 rounded-full hover:bg-gray-700 focus:outline-none">❯</button>
+                <button
+                    id="prev-certificates"
+                    class="absolute top-1/2 -left-4 transform -translate-y-1/2 bg-gray-500 text-white p-2 rounded-full hover:bg-gray-700 focus:outline-none"
+                >
+                    ❮
+                </button>
+                <button
+                    id="next-certificates"
+                    class="absolute top-1/2 -right-4 transform -translate-y-1/2 bg-gray-500 text-white p-2 rounded-full hover:bg-gray-700 focus:outline-none"
+                >
+                    ❯
+                </button>
             </div>
         </div>
     </div>

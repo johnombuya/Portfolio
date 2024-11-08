@@ -13,9 +13,12 @@
         <title>John Ombuya's Portfolio</title>
 
         <!-- Google Fonts -->
-        <link rel="preconnect" href="https://fonts.googleapis.com">
-        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-        <link href="https://fonts.googleapis.com/css2?family=Afacad:ital,wght@0,400..700;1,400..700&family=DM+Sans:ital,opsz@1,9..40&family=Montserrat&display=swap" rel="stylesheet">
+        <link rel="preconnect" href="https://fonts.googleapis.com" />
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+        <link
+            href="https://fonts.googleapis.com/css2?family=Afacad:ital,wght@0,400..700;1,400..700&family=DM+Sans:ital,opsz@1,9..40&family=Montserrat&display=swap"
+            rel="stylesheet"
+        />
 
         <!-- Font Awesome -->
         <link
@@ -30,7 +33,10 @@
         />
 
         <script src="https://cdn.tailwindcss.com"></script>
-        <script defer src="{{ url_for('static', filename='js/script.js') }}"></script>
+        <script
+            defer
+            src="{{ url_for('static', filename='js/script.js') }}"
+        ></script>
     </head>
     <body>
         <div class="main-content min-h-screen">
@@ -42,12 +48,14 @@
                 <!-- Header end -->
 
                 <div class="container mx-auto px-4 pt-24">
+                    <!-- Intro start -->
                     <!-- Background image -->
-                    <div class="bg-cover bg-center bg-[url('../static/assets/footer-background.jpg')]">
-                        <!-- Intro start -->
+                    <div
+                        class="bg-cover bg-center bg-[url('../static/assets/footer-background.jpg')]"
+                    >
                         {% include "introduction.html" %}
-                        <!-- Intro end -->
                     </div>
+                    <!-- Intro end -->
 
                     <!-- About me start -->
                     {% include "about.html" %}
@@ -56,7 +64,6 @@
                     <!-- Skills & Interests start -->
                     {% include "skills.html" %}
                     <!-- Skills & Interests end -->
-
 
                     <!-- Portfolio start -->
                     {% include "portfolio.html" %}
