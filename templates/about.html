@@ -1,205 +1,23 @@
-<!DOCTYPE html>
-<html lang="en">
-    <head>
-        <!-- Required meta tags -->
-        <meta charset="utf-8" />
-        <meta
-            name="viewport"
-            content="width=device-width, initial-scale=1, shrink-to-fit=no"
+<section id="about" class="px-4 py-20 bg-gradient-to-r from-gray-800 to-zinc-900">
+    <div class="flex flex-col md:flex-row items-center md:items-start gap-8">
+        <img
+            src="/placeholder.svg?height=200&width=200"
+            alt="John Ombuya"
+            class="rounded-full w-32 h-32 md:w-48 md:h-48 object-cover"
         />
-
-        <!-- Bootstrap CSS -->
-        <link
-            rel="stylesheet"
-            href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
-            integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T"
-            crossorigin="anonymous"
-        />
-        <link rel="stylesheet" href="static\css\styles.css" />
-
-        <!-- Google Fonts -->
-        <link rel="preconnect" href="https://fonts.googleapis.com" />
-        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-        <link
-            href="https://fonts.googleapis.com/css2?family=Ubuntu:wght@300;400&display=swap"
-            rel="stylesheet"
-        />
-        <link rel="preconnect" href="https://fonts.googleapis.com" />
-        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-        <link
-            href="https://fonts.googleapis.com/css2?family=Montserrat:wght@100;400;900&display=swap"
-            rel="stylesheet"
-        />
-
-        <link
-            rel="icon"
-            href="{{ url_for('static', filename='assets/favicon.ico') }}"
-        />
-
-        <!-- Font Awesome Script -->
-        <script
-            src="https://kit.fontawesome.com/321779f561.js"
-            crossorigin="anonymous"
-        ></script>
-
-        <style>
-            /* Title */
-            body {
-                background-color: #000000;
-                color: white;
-            }
-
-            h1 {
-                font-family: 'Montserrat', sans-serif;
-                font-size: 2rem;
-                line-height: 1.5;
-                font-weight: 900;
-            }
-
-            .container-fluid {
-                padding: 3% 15%;
-            }
-
-            div > img {
-                width: 200px;
-                height: 200px;
-            }
-            .row {
-                margin-top: 50px;
-            }
-        </style>
-        <!-- External CSS -->
-        <title>Ombuya's Portfolio 3.0/About</title>
-    </head>
-    <body>
-        <div id="loader"></div>
-
-        <div class="container-fluid">
-            <nav class="navbar navbar-expand-lg navbar-dark bg-transparent">
-                <a class="navbar-brand" href="{{ url_for('home') }}"
-                    ><img
-                        src="{{ url_for('static', filename='assets/favicon.ico') }}"
-                        class="favicon-nav"
-                    /><span class="logo-text">mbuya</span></a
-                >
-                <button
-                    class="navbar-toggler"
-                    type="button"
-                    data-toggle="collapse"
-                    data-target="#navbarNav"
-                    aria-controls="navbarNav"
-                    aria-expanded="false"
-                    aria-label="Toggle navigation"
-                >
-                    <span class="navbar-toggler-icon"></span>
-                </button>
-                <div class="collapse navbar-collapse" id="navbarNav">
-                    <ul class="navbar-nav ml-auto">
-                        <li class="nav-item">
-                            <a class="nav-link" href="{{ url_for('home') }}"
-                                >Home <span class="sr-only">(current)</span></a
-                            >
-                        </li>
-                        <li class="nav-item active">
-                            <a class="nav-link" href="{{ url_for('about') }}"
-                                >About</a
-                            >
-                        </li>
-                    </ul>
-                </div>
-            </nav>
-        </div>
-        <div class="container-fluid">
-            <img
-                class="img-responsive center-block d-block mx-auto"
-                src="{{ url_for('static', filename='assets/self.png') }}"
-                style="margin-bottom: 20px"
-            />
-            <p style="margin-top: 20px" class="text-center">
-                <b>John Ombuya</b> is a
-                <b
-                    ><span class="age">20</span> year old, KCA University
-                    Software Engineering student</b
-                >
-                who has worked with
-                <b>HTML and CSS, Python, JavaScript, Java, C++, and C.</b> He is
-                also enamored with exploring new foods and all forms of art.
+        <div>
+            <h2 class="text-2xl md:text-3xl font-bold mb-4">
+                About Me
+            </h2>
+            <p class="mb-4 text-sm md:text-base">
+                I'm a
+                <span class="font-bold">20-year-old KCA University Software Engineering student</span>
+                with experience in
+                <span class="font-bold">HTML, CSS, Python, JavaScript, Java, C++, and C</span>. I'm passionate about exploring new technologies, foods, and all forms of art.
             </p>
-            <div class="row">
-                <div class="col-lg-6">
-                    <img
-                        class="img-responsive center-block d-block mx-auto"
-                        src="{{ url_for('static', filename='assets/code.png') }}"
-                    />
-                </div>
-                <div class="col-lg-6 text-center">
-                    <h1>Design &<br />Development</h1>
-                    <p>
-                        I began learning to code at the age of 17 to work in the
-                        video game industry. It's been three years, and during
-                        that time I've accumulated programming knowledge in a
-                        variety of languages and with a couple of projects under
-                        my belt.
-                    </p>
-                </div>
-            </div>
-            <div class="row">
-                <div class="col-lg-6 text-center">
-                    <h1>Photography</h1>
-                    <p>
-                        I decided to try being on the other side of the camera
-                        after years of not being photogenic, and now I am the
-                        one who is generally requested to snap pictures at all
-                        the family gatherings.
-                    </p>
-                </div>
-                <div class="col-lg-6">
-                    <!-- Centers imgs in divs -->
-                    <img
-                        class="img-responsive center-block d-block mx-auto"
-                        src="{{ url_for('static', filename='assets/photography.png') }}"
-                    />
-                </div>
-            </div>
-
-            <!-- Back to top button -->
-            <button
-                type="button"
-                class="btn btn-outline-primary btn-floating btn-lg"
-                id="btn-back-to-top"
-            >
-                <i class="fas fa-arrow-up"></i>
-            </button>
+            <p class="text-sm md:text-base">
+                I began my coding journey at 17 with the dream of working in the video game industry. Over the past three years, I've built a strong foundation in various programming languages and completed several projects.
+            </p>
         </div>
-        {% include "footer.html" %}
-
-        <!-- Optional JavaScript -->
-        <!-- jQuery first, then Popper.js, then Bootstrap JS -->
-        <script
-            src="https://code.jquery.com/jquery-3.2.1.slim.min.js"
-            integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN"
-            crossorigin="anonymous"
-        ></script>
-        <script
-            src="https://cdn.jsdelivr.net/npm/popper.js@1.12.9/dist/umd/popper.min.js"
-            integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q"
-            crossorigin="anonymous"
-        ></script>
-        <script
-            src="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/js/bootstrap.min.js"
-            integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl"
-            crossorigin="anonymous"
-        ></script>
-        <!-- Custom js -->
-        <script src="{{ url_for('static' , filename='js/script.js') }}"></script>
-
-        <!-- Loader js -->
-        <script src="{{ url_for('static' , filename='js/loader.js') }}"></script>
-
-        <!-- Back to Top js -->
-        <script src="{{ url_for('static' , filename='js/backtotop.js') }}"></script>
-
-        <!-- Fadeout -->
-        <script src="{{ url_for('static' , filename='js/fadeout.js') }}"></script>
-    </body>
-</html>
+    </div>
+</section>

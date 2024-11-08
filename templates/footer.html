@@ -1,42 +1,40 @@
-<link rel="stylesheet" href="static\css\styles.css" />
+<footer class="bg-white shadow dark:bg-gray-800">
+    <!-- Background image -->
+    <div class="bg-cover bg-center bg-[url('../static/assets/footer-background.jpg')]">
 
-<div class="footer-dark">
-    <footer>
-        <div class="container">
-            <div class="row">
-                <div class="col-sm-6 col-md-3 item">
-                    <h3>Pages</h3>
-                    <ul>
-                        <li><a href="{{ url_for('home') }}">Home</a></li>
-                        <li><a href="{{ url_for('about') }}">About</a></li>
-                    </ul>
+        <div class="mb-4 border-b border-gray-200 dark:border-gray-700 flex justify-center"></div>
+        <div class="w-full mx-auto max-w-screen-xl p-4 md:flex md:items-start md:justify-between sm:mb-4 space-y-4 md:space-y-0">
+            <!-- All Rights Reserved Section -->
+            <span class="text-sm text-gray-500 sm:text-center dark:text-gray-400">© 2024 <a href="https://flowbite.com/" class="hover:underline">JON</a>. All Rights Reserved.</span>
+
+
+            <!-- Resume Column -->
+            <a href="/download" class="block max-w-sm p-6 bg-white border border-gray-200 rounded-lg shadow hover:bg-gray-100 dark:bg-gray-800 dark:border-gray-700 dark:hover:bg-gray-700">
+                <div class="flex space-x-1 items-center">
+                    <i class="fa-regular fa-file-pdf" style="color: red" aria-hidden="true"></i>
+                    <h5 class="mb-2 font-bold tracking-tight text-gray-900 dark:text-white">Resume</h5>
                 </div>
-                <div class="col-md-6 item text">
-                    <h3>My Resume</h3>
-                    <a class="btn btn-dark" href="/download"
-                        ><i
-                            class="fa-regular fa-file-pdf"
-                            style="color: red"
-                            aria-hidden="true"
-                        ></i>
-                        Download</a
-                    >
-                </div>
-                <div class="col item social">
-                    <a href="mailto:jjNgugi27@gmail.com" target="_blank"
-                        ><i class="fa-solid fa-envelope"></i></a
-                    ><a href="https://github.com/wxllxngton" target="_blank"
-                        ><i class="fa-brands fa-github"></i></a
-                    ><a
-                        href="https://www.linkedin.com/in/john-ombuya-b2798a22b"
-                        target="_blank"
-                        ><i class="fa-brands fa-linkedin-in"></i
-                    ></a>
-                </div>
-            </div>
-            <p class="copyright">Company Name © 2018</p>
+                <p class="font-normal text-gray-700 dark:text-gray-400">Click to download my resume.</p>
+            </a>
         </div>
-    </footer>
-</div>
 
-<script src="../static/js/footer.js"></script>
+        <!-- Social Media Links -->
+        <ul class="w-full mx-auto max-w-screen-xl p-4 md:flex md:items-center md:space-x-5 text-sm text-gray-500 sm:text-center dark:text-gray-400 flex">
+            <li>
+                <a href="mailto:jjNgugi27@gmail.com" target="_blank">
+                    <i class="fa-solid fa-envelope"></i><span class="p-2">Mail</span>
+                </a>
+            </li>
+            <li>
+                <a href="https://github.com/wxllxngton" target="_blank">
+                    <i class="fa-brands fa-github"></i><span class="p-2">GitHub</span>
+                </a>
+            </li>
+            <li>
+                <a href="https://www.linkedin.com/in/john-ombuya-b2798a22b" target="_blank">
+                    <i class="fa-brands fa-linkedin-in"></i><span class="p-2">LinkedIn</span>
+                </a>
+            </li>
+        </ul>
+    </div>
+</footer>
