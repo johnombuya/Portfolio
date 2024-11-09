@@ -1,6 +1,56 @@
 body {
-    font-family: "Afacad", sans-serif;
+    font-family: 'Afacad', sans-serif;
     font-optical-sizing: auto;
     /* font-weight: <weight>; */
     font-style: normal;
+}
+
+/* Style for the active tab */
+[role='tab'][aria-selected='true'] {
+    border-color: #1d4ed8; /* For border-blue-500 */
+    border-bottom-width: 2px; /* Ensure the border-b-2 class applies correctly */
+}
+
+/* Ensure Swiper container occupies full width */
+.centered-slide-carousel {
+    width: 100%;
+    max-width: 100%; /* Avoid any width constraints */
+}
+
+.centered-slide-carousel .swiper-slide {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100%; /* Make slides take up the full height of the parent */
+}
+
+#projects-carousel,
+#certificates-carousel {
+    margin-left: auto;
+    margin-right: auto;
+    width: 75%;
+    max-width: 100%;
+}
+
+/* Control the width of the Swiper container on larger screens */
+@media (min-width: 1024px) {
+    .centered-slide-carousel {
+        width: 100vw;
+        height: auto;
+    }
+}
+
+.swiper-wrapper {
+    width: 100%;
+    height: max-content !important;
+    padding-bottom: 64px !important;
+    -webkit-transition-timing-function: linear !important;
+    transition-timing-function: linear !important;
+    position: relative;
+}
+.swiper-pagination-bullet {
+    background: #4f46e5;
+}
+.swiper-pagination-bullet-active {
+    background: #4f46e5 !important;
 }

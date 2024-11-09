@@ -24,15 +24,6 @@ def home():
     certificate_paths = [f"{certificates_dir_rel_path}/{certificate_path}" for certificate_path in fetch_file_names(certificates_dir_path)]
     return render_template("index.html", projects=Project.select(), certificate_paths=certificate_paths)
 
-@app.route("/about")
-def about():
-    """Render the about page providing information about the portfolio owner."""
-    return render_template("about.html")
-
-@app.route("/contact")
-def contact():
-    """Render the contact page with contact information."""
-    return render_template("contact.html")
 
 @app.route("/download")
 def download_file():
