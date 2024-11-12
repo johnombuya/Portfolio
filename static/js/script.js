@@ -1,34 +1,58 @@
-// Dark Mode Toggle Logic
+// Function to toggle dark mode and save the preference in localStorage
 function toggleDarkMode() {
-    const root = document.documentElement; // Get the root element
-    const isDarkMode = root.classList.toggle('dark'); // Toggle 'dark' class on root element
-    // Save the current theme preference to localStorage
-    localStorage.setItem('theme', isDarkMode ? 'dark' : 'light');
-    updateDarkModeIcon(isDarkMode); // Update the icon based on the mode
-}
-
-// Update the dark mode icon based on current theme
-function updateDarkModeIcon(isDarkMode) {
-    const main = document.querySelector('.main-content'); // Get the main content container
-    const darkModeIcon = document.getElementById('dark-mode-icon'); // Get the dark mode icon element
-    main.classList.toggle('dark'); // Apply dark mode styles to main content
-    // Set the appropriate SVG icon based on the mode
-    darkModeIcon.innerHTML = isDarkMode
-        ? '<svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 3v1m0 16v1m8-9h1M4 12H3m15.364-7.364l-.707.707M6.343 6.343l-.707.707M17.657 17.657l-.707-.707M6.343 17.657l-.707-.707" /></svg>' // Moon icon for dark mode
-        : '<svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 4.354a8.001 8.001 0 000 15.292A7 7 0 1112 4.354z" /></svg>'; // Sun icon for light mode
-}
-
-// On page load, set the theme based on localStorage or system preference
-document.addEventListener('DOMContentLoaded', () => {
     const root = document.documentElement;
-    const savedTheme = localStorage.getItem('theme'); // Retrieve the saved theme from localStorage
-    if (savedTheme === 'dark') {
-        root.classList.add('dark'); // Apply dark mode if stored preference is 'dark'
-        updateDarkModeIcon(true); // Update the icon for dark mode
+    const isDarkMode = root.classList.toggle('dark'); // Toggle 'dark' class on the root element
+    localStorage.setItem('theme', isDarkMode ? 'dark' : 'light'); // Save the theme preference
+    updateDarkModeIcon(isDarkMode); // Update the icon
+}
+
+// Function to update the dark mode icon based on the current theme
+function updateDarkModeIcon(isDarkMode) {
+    const darkModeIcon = document.getElementById('dark-mode-icon');
+    darkModeIcon.innerHTML = isDarkMode
+        ? `<svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 3v1m0 16v1m8-9h1M4 12H3m15.364-7.364l-.707.707M6.343 6.343l-.707.707M17.657 17.657l-.707-.707M6.343 17.657l-.707-.707" /></svg>` // Moon icon for dark mode
+        : `<svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 4.354a8.001 8.001 0 000 15.292A7 7 0 1112 4.354z" /></svg>`; // Sun icon for light mode
+}
+
+document.addEventListener('DOMContentLoaded', () => {
+    // On page load, set the theme based on localStorage or system preference
+    const root = document.documentElement;
+    const savedTheme = localStorage.getItem('theme');
+    const isDarkMode = savedTheme === 'dark';
+
+    if (isDarkMode) {
+        root.classList.add('dark');
     } else {
-        root.classList.remove('dark'); // Remove dark mode if the stored preference is not 'dark'
-        updateDarkModeIcon(false); // Update the icon for light mode
+        root.classList.remove('dark');
     }
+
+    updateDarkModeIcon(isDarkMode); // Set the initial icon state
+
+    /**
+     * Handle navigation clicks within the navigation bar to smooth scroll to target sections.
+     */
+    document.querySelector('nav').addEventListener('click', function (e) {
+        // Determine if the clicked element or its parent has the 'nav-real' class
+        const target = e.target.closest('.nav-real');
+
+        // If a valid target with the 'nav-real' class is found
+        if (target) {
+            e.preventDefault(); // Prevent default anchor behavior (e.g., immediate jump)
+            const targetId = target.getAttribute('href'); // Get the href value
+
+            // Ensure the target element exists before scrolling
+            const targetElement = document.querySelector(targetId);
+            if (targetElement) {
+                targetElement.scrollIntoView({ behavior: 'smooth' }); // Smooth scroll
+            } else {
+                console.warn(`No element found for ID: ${targetId}`);
+            }
+        }
+    });
+
+    // Add event listener to the toggle button
+    const toggleButton = document.getElementById('dark-mode-toggle');
+    toggleButton.addEventListener('click', toggleDarkMode);
 
     // Tab toggle logic (for switching between Projects and Certificates)
     const tabs = document.querySelectorAll('[role="tab"]');
@@ -86,5 +110,34 @@ document.addEventListener('DOMContentLoaded', () => {
                 spaceBetween: 0,
             },
         },
+    });
+
+    const swiperDrawer = new Swiper('.vertical-slide-carousel', {
+        loop: true,
+        direction: 'vertical',
+        // mousewheel: true, // Removed `mousewheelControl` and kept `mousewheel: true`
+        mousewheelControl: true,
+        mousewheel: {
+            releaseOnEdges: true,
+        },
+        spaceBetween: 30,
+        grabCursor: true,
+        pagination: {
+            el: '.vertical-slide-carousel .swiper-pagination',
+            clickable: true,
+        },
+    });
+
+    // Create a new instance of Viewer
+    const gallery = new Viewer(document.getElementById('certificate_imgs'), {
+        // Optional configuration options (refer to the Viewer.js documentation)
+        navbar: true,
+        toolbar: true,
+        tooltip: true,
+        fullscreen: false,
+        movable: true,
+        zoomable: true,
+        scalable: true,
+        transition: true,
     });
 });

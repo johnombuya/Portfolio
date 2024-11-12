@@ -6,10 +6,28 @@
             name="viewport"
             content="width=device-width, initial-scale=1, shrink-to-fit=no"
         />
+        <!-- Favicon -->
+        <link
+            rel="apple-touch-icon"
+            sizes="180x180"
+            href="{{ url_for('static', filename='assets/favicon_io/apple-touch-icon.png') }}"
+        />
         <link
             rel="icon"
-            href="{{ url_for('static', filename='assets/favicon.ico') }}"
+            type="image/png"
+            sizes="32x32"
+            href="{{ url_for('static', filename='assets/favicon_i
+            /favicon_io/favicon-32x32.png') }}/"
         />
+        <link
+            rel="icon"
+            type="image/png"
+            sizes="16x16"
+            href="{{ url_for('static', filename='assets/favicon_io/favicon-16x16.png') }}"
+        />
+        <link rel="manifest" href="/site.webmanifest" />
+
+        <!-- Title -->
         <title>John Ombuya's Portfolio</title>
 
         <!-- Google Fonts -->
@@ -48,18 +66,13 @@
             src="{{ url_for('static', filename='js/script.js') }}"
         ></script>
 
-        <script>
-            // On page load or when changing themes, it's best to add inline in `head` to avoid FOUC (Flash of Unstyled Content)
-            if (
-                localStorage.getItem('theme') === 'dark' || // Check if dark theme is stored in localStorage
-                (!('theme' in localStorage) &&
-                    window.matchMedia('(prefers-color-scheme: dark)').matches) // Check system preference if no theme is stored
-            ) {
-                document.documentElement.classList.add('dark'); // Apply dark theme if condition is met
-            } else {
-                document.documentElement.classList.remove('dark'); // Apply light theme if condition is not met
-            }
-        </script>
+        <!-- Viewer js -->
+        <script
+            src="https://cdnjs.cloudflare.com/ajax/libs/viewerjs/1.11.6/viewer.min.js"
+            integrity="sha512-EC3CQ+2OkM+ZKsM1dbFAB6OGEPKRxi6EDRnZW9ys8LghQRAq6cXPUgXCCujmDrXdodGXX9bqaaCRtwj4h4wgSQ=="
+            crossorigin="anonymous"
+            referrerpolicy="no-referrer"
+        ></script>
     </head>
 
     <body>
@@ -75,7 +88,7 @@
                     <!-- Intro start -->
                     <!-- Background image -->
                     <div
-                        class="bg-cover bg-center bg-[url('../static/assets/footer-background.jpg')]"
+                        class="bg-cover bg-center bg-[url('../static/assets/introduction_imgs/introduction-background.jpg')]"
                     >
                         {% include "introduction.html" %}
                     </div>
@@ -93,6 +106,7 @@
                     {% include "portfolio.html" %}
                     <!-- Portfolio end -->
                 </div>
+                <!--HTML CODE-->
             </div>
             <!-- Footer start -->
             {% include "footer.html" %}

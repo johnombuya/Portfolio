@@ -73,17 +73,17 @@
                                 <h5
                                     class="mb-2 text-2xl font-bold tracking-tight text-gray-900 dark:text-white"
                                 >
-                                    {{ project.h4 }}
+                                    {{ project.title }}
                                 </h5>
                                 <h5
                                     class="mb-2 font-bold tracking-tight text-gray-400 dark:text-white"
                                 >
-                                    {{ project.h6 }}
+                                    {{ project.subtitle }}
                                 </h5>
                                 <p
                                     class="font-normal text-gray-700 dark:text-gray-400"
                                 >
-                                    {{ project.p }}
+                                    {{ project.description }}
                                 </p>
                                 <a
                                     href="{{ project.link }}"
@@ -129,37 +129,43 @@
                     class="flex transition-transform duration-500 ease-in-out"
                 >
                     <div
-                        class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-6"
+                        class="swiper vertical-slide-carousel swiper-container relative h-[600px]"
                     >
-                        {% for certificate_path in certificate_paths %}
-                        <a
-                            href="#"
-                            class="flex flex-col items-center bg-white border border-gray-200 rounded-lg shadow md:flex-row md:max-w-xl hover:bg-gray-100 dark:border-gray-700 dark:bg-gray-800 dark:hover:bg-gray-700 duration-300 hover:scale-105 hover:shadow-md"
-                        >
-                            <div>
-                                <img
-                                    class="object-cover h-full w-full rounded-t-lg h-96 md:h-auto md:w-48 md:rounded-none md:rounded-s-lg p-4"
-                                    src="{{ certificate_path }}"
-                                    alt=""
-                                />
-                            </div>
-                            <div
-                                class="flex flex-col justify-between p-4 leading-normal"
-                            >
-                                <h5
-                                    class="mb-2 text-1xl font-bold tracking-tight text-gray-900 dark:text-white"
+                        <div id="certificate_imgs" class="swiper-wrapper">
+                            {% for certificate in certificates %}
+                            <div class="swiper-slide">
+                                <div
+                                    class="flex md:flex-col flex-col px-6 py-6 items-center bg-white border border-gray-200 rounded-lg shadow md:flex-row hover:bg-gray-100 dark:border-gray-700 dark:bg-gray-800 dark:hover:bg-gray-700 duration-300 hover:scale-105 hover:shadow-md"
                                 >
-                                    Stanford Data Ocean
-                                </h5>
-                                <p
-                                    class="mb-3 font-normal text-gray-700 dark:text-gray-400"
-                                >
-                                    Awarded for completing a course or achieving
-                                    a milestone.
-                                </p>
+                                    <div>
+                                        <img
+                                            class="object-contain h-full w-full rounded-t-lg md:h-auto md:w-72 md:rounded-none md:rounded-s-lg p-4"
+                                            src="{{ url_for('static', filename='assets/certificates/' + certificate.img_path) }}"
+                                            alt=""
+                                        />
+                                    </div>
+                                    <div
+                                        class="flex flex-col justify-between p-6 leading-normal"
+                                    >
+                                        <h5
+                                            class="mb-2 text-2xl font-bold tracking-tight text-gray-900 dark:text-white"
+                                        >
+                                            {{ certificate.title }}
+                                        </h5>
+                                        <p
+                                            class="mb-3 font-normal text-gray-700 dark:text-gray-400"
+                                        >
+                                            {{ certificate.description }}
+                                        </p>
+                                    </div>
+                                </div>
                             </div>
-                        </a>
-                        {% endfor %}
+                            {% endfor %}
+                        </div>
+                        <!-- Adjusting the swiper-pagination position -->
+                        <div
+                            class="swiper-pagination !absolute !right-2 !top-1/2 !-translate-y-1/2"
+                        ></div>
                     </div>
                 </div>
             </div>

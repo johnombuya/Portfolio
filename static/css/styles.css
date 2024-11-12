@@ -49,8 +49,8 @@ body {
     position: relative;
 }
 .swiper-pagination-bullet {
-    background: #4f46e5;
+    background: #1d4ed8;
 }
 .swiper-pagination-bullet-active {
-    background: #4f46e5 !important;
+    background: #1d4ed8 !important;
 }
