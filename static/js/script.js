@@ -1,3 +1,22 @@
+// Function to toggle the loader
+let loader;
+
+function loadNow(opacity) {
+    if (opacity <= 0) {
+        displayContent();
+    } else {
+        loader.style.opacity = opacity;
+        window.setTimeout(function () {
+            loadNow(opacity - 0.18);
+        }, 50);
+    }
+}
+
+function displayContent() {
+    loader.style.display = 'none';
+    document.getElementById('main-content').style.display = 'block';
+}
+
 // Function to toggle dark mode and save the preference in localStorage
 function toggleDarkMode() {
     const root = document.documentElement;
@@ -15,6 +34,10 @@ function updateDarkModeIcon(isDarkMode) {
 }
 
 document.addEventListener('DOMContentLoaded', () => {
+    // Once the DOM is loaded, hide the loader
+    loader = document.getElementById('loader');
+    loadNow(1);
+
     // On page load, set the theme based on localStorage or system preference
     const root = document.documentElement;
     const savedTheme = localStorage.getItem('theme');
@@ -140,4 +163,8 @@ document.addEventListener('DOMContentLoaded', () => {
         scalable: true,
         transition: true,
     });
+
+    // Set current year in footer
+    document.querySelector('.footer-year').textContent =
+        new Date().getFullYear();
 });
