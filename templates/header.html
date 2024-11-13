@@ -13,20 +13,20 @@
             </div>
         </a>
 
-        <div class="flex items-center space-x-4">
+        <div class="flex items-center space-x-4 md:flex hidden">
             <a
                 href="#about"
-                class="hover:text-primary transition-colors duration-300 hover:scale-105 hover:shadow-xl nav-real"
+                class="hover:text-primary transition-colors mix-blend-difference duration-300 hover:scale-105 hover:shadow-xl nav-real"
                 >About</a
             >
             <a
                 href="#skills"
-                class="hover:text-primary transition-colors duration-300 hover:scale-105 hover:shadow-xl nav-real"
+                class="hover:text-primary transition-colors mix-blend-difference duration-300 hover:scale-105 hover:shadow-xl nav-real"
                 >Skills</a
             >
             <a
                 href="#portfolio"
-                class="hover:text-primary transition-colors duration-300 hover:scale-105 hover:shadow-xl nav-real"
+                class="hover:text-primary transition-colors mix-blend-difference duration-300 hover:scale-105 hover:shadow-xl nav-real"
                 >Portfolio</a
             >
             <a
@@ -54,5 +54,88 @@
                 </span>
             </button>
         </div>
+
+        <!-- Hamburger Menu for small screens -->
+        <div class="md:hidden flex items-center">
+            <button
+                id="hamburger-menu"
+                class="hover:text-primary transition-colors mix-blend-difference duration-300 hover:scale-105 hover:shadow-xl nav-real"
+            >
+                <svg
+                    xmlns="http://www.w3.org/2000/svg"
+                    class="h-6 w-6"
+                    fill="none"
+                    viewBox="0 0 24 24"
+                    stroke="currentColor"
+                >
+                    <path
+                        stroke-linecap="round"
+                        stroke-linejoin="round"
+                        stroke-width="2"
+                        d="M4 6h16M4 12h16M4 18h16"
+                    />
+                </svg>
+            </button>
+        </div>
     </nav>
+
+    <!-- Dropdown Menu (hidden by default) -->
+    <div
+        id="dropdown-menu"
+        class="md:hidden flex flex-col items-center space-y-4 bg-gray-800 text-white p-4 absolute top-0 left-0 right-0 mt-16 hidden"
+    >
+        <a
+            href="#about"
+            class="hover:text-primary transition-colors duration-300"
+        >
+            About
+        </a>
+        <a
+            href="#skills"
+            class="hover:text-primary transition-colors duration-300"
+        >
+            Skills
+        </a>
+        <a
+            href="#portfolio"
+            class="hover:text-primary transition-colors duration-300"
+        >
+            Portfolio
+        </a>
+        <a
+            href="/download"
+            class="hover:text-primary transition-colors duration-300"
+        >
+            Download Resume
+        </a>
+        <button id="dark-mode-toggle" class="p-2">
+            <span id="dark-mode-icon">
+                <!-- Default icon; this will be replaced dynamically -->
+                <svg
+                    xmlns="http://www.w3.org/2000/svg"
+                    class="h-6 w-6"
+                    fill="none"
+                    viewBox="0 0 24 24"
+                    stroke="currentColor"
+                >
+                    <path
+                        stroke-linecap="round"
+                        stroke-linejoin="round"
+                        stroke-width="2"
+                        d="M12 4.354a8.001 8.001 0 000 15.292A7 7 0 1112 4.354z"
+                    />
+                </svg>
+            </span>
+        </button>
+    </div>
 </header>
+
+<script>
+    // JavaScript to toggle the dropdown menu
+    const hamburgerMenu = document.getElementById('hamburger-menu');
+    const dropdownMenu = document.getElementById('dropdown-menu');
+
+    hamburgerMenu.addEventListener('click', () => {
+        dropdownMenu.classList.toggle('hidden');
+    });
+</script>

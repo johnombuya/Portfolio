@@ -77,8 +77,20 @@
 
     <body>
         <!-- Loader Div -->
-        <div id="loader"></div>
-        <div class="main-content min-h-screen">
+        <div id="loader" class="loader">
+            <img
+                src="{{ url_for('static', filename='assets/loader.gif') }}"
+                alt="Loading..."
+                class="loader-img"
+            />
+        </div>
+
+        <!-- Main content -->
+        <div
+            id="main-content"
+            class="main-content min-h-screen"
+            style="display: none"
+        >
             <div
                 class="bg-background text-foreground transition-colors duration-300 dark:bg-gray-800 dark:text-white"
             >

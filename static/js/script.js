@@ -1,4 +1,3 @@
-// Function to toggle the loader
 let loader;
 
 function loadNow(opacity) {
@@ -164,7 +163,11 @@ document.addEventListener('DOMContentLoaded', () => {
         transition: true,
     });
 
-    // Set current year in footer
-    document.querySelector('.footer-year').textContent =
-        new Date().getFullYear();
+    // Set current age in about me section
+    let ageText = document.querySelector('.age-text');
+    ageText.textContent = new Date().getFullYear() - 2002;
+
+    // Set current year in footer section
+    let footerYearText = document.querySelector('.footer-year-text');
+    footerYearText.textContent = new Date().getFullYear();
 });

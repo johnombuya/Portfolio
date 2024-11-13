@@ -1,32 +1,41 @@
 <section
     id="about"
-    class="px-4 py-20 bg-gradient-to-r from-gray-800 to-zinc-900 dark:text-white text-white"
+    class="px-6 py-20 bg-gradient-to-r from-gray-800 to-zinc-900 text-white"
 >
     <div class="flex flex-col md:flex-row items-center md:items-start gap-8">
         <img
             src="{{ url_for('static', filename='assets/self.png') }}"
             alt="John Ombuya"
-            class="rounded-full w-32 h-32 md:w-48 md:h-48 object-cover"
+            class="rounded-full w-32 h-32 md:w-48 md:h-48 object-cover shadow-xl transform transition-transform duration-300 hover:scale-105"
         />
-        <div>
-            <h2 class="text-2xl md:text-3xl font-bold mb-4">About Me</h2>
-            <p class="mb-4 text-sm md:text-base">
-                I'm a
-                <span class="font-bold"
-                    >20-year-old KCA University Software Engineering
-                    student</span
+        <div class="space-y-6">
+            <h2
+                class="text-3xl font-semibold leading-tight bg-clip-text text-white"
+            >
+                About Me
+            </h2>
+            <p class="text-lg md:text-lg text-gray-300">
+                Hey there! I'm a
+                <span class="font-semibold text-gray-100"
+                    ><span class="age-text">20</span>-year-old tech enthusiast</span
                 >
-                with experience in
-                <span class="font-bold"
-                    >HTML, CSS, Python, JavaScript, Java, C++, and C</span
-                >. I'm passionate about exploring new technologies, foods, and
-                all forms of art.
+                with a growing set of skills in web development, automation,
+                cloud computing, and AI. I'm well-versed in languages and
+                frameworks such as
+                <span class="font-semibold text-gray-100"
+                    >Node.js, Python, React Native, Flask, and Express.js</span
+                >. I also have experience working with cloud services like
+                <span class="font-semibold text-gray-100">Azure</span>, as well
+                as tools for automation and web scraping</span>.
             </p>
-            <p class="text-sm md:text-base">
-                I began my coding journey at 17 with the dream of working in the
-                video game industry. Over the past three years, I've built a
-                strong foundation in various programming languages and completed
-                several projects.
+            <p class="text-lg md:text-lg text-gray-300">
+                My journey into coding began at 17, when I dreamt of building
+                the next big video game. Fast forward a few years, and I’m now
+                immersed in a variety of technologies, tackling projects that
+                range from web development to AI and machine learning. The path
+                has been full of learning moments, exciting discoveries, and a
+                bit of frustration (mostly from debugging!). But at the end of
+                the day, I enjoy every line of code.
             </p>
         </div>
     </div>
