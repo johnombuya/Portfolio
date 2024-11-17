@@ -32,6 +32,33 @@ function updateDarkModeIcon(isDarkMode) {
         : `<svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 4.354a8.001 8.001 0 000 15.292A7 7 0 1112 4.354z" /></svg>`; // Sun icon for light mode
 }
 
+/**
+ * Handles navigation clicks within the navigation bar to smooth scroll to target sections.
+ *
+ * @param {Event} e - The click event triggered by the user.
+ * @param {string} parentClass - The class name to identify the clickable elements that trigger the scroll.
+ */
+function scrollToSection(e, parentClass) {
+    // Determine if the clicked element or its parent has the 'parentClass' class
+    const target = e.target.closest(`.${parentClass}`);
+
+    // If a valid target with the specified class is found
+    if (target) {
+        e.preventDefault(); // Prevent default anchor behavior (e.g., immediate jump)
+
+        // Get the href value which corresponds to the target section's ID
+        const targetId = target.getAttribute('href');
+
+        // Ensure the target element exists before scrolling
+        const targetElement = document.querySelector(targetId);
+        if (targetElement) {
+            targetElement.scrollIntoView({ behavior: 'smooth' }); // Smooth scroll to target element
+        } else {
+            console.warn(`No element found for ID: ${targetId}`);
+        }
+    }
+}
+
 document.addEventListener('DOMContentLoaded', () => {
     // Once the DOM is loaded, hide the loader
     loader = document.getElementById('loader');
@@ -50,27 +77,15 @@ document.addEventListener('DOMContentLoaded', () => {
 
     updateDarkModeIcon(isDarkMode); // Set the initial icon state
 
-    /**
-     * Handle navigation clicks within the navigation bar to smooth scroll to target sections.
-     */
-    document.querySelector('nav').addEventListener('click', function (e) {
-        // Determine if the clicked element or its parent has the 'nav-real' class
-        const target = e.target.closest('.nav-real');
+    // Event listener for navigation clicks
+    document
+        .querySelector('nav')
+        .addEventListener('click', (e) => scrollToSection(e, 'nav-real'));
 
-        // If a valid target with the 'nav-real' class is found
-        if (target) {
-            e.preventDefault(); // Prevent default anchor behavior (e.g., immediate jump)
-            const targetId = target.getAttribute('href'); // Get the href value
-
-            // Ensure the target element exists before scrolling
-            const targetElement = document.querySelector(targetId);
-            if (targetElement) {
-                targetElement.scrollIntoView({ behavior: 'smooth' }); // Smooth scroll
-            } else {
-                console.warn(`No element found for ID: ${targetId}`);
-            }
-        }
-    });
+    // Event listener for dropdown menu clicks (fixing class selector to be correct)
+    document
+        .querySelector('#dropdown-menu')
+        .addEventListener('click', (e) => scrollToSection(e, 'dropdown-link'));
 
     // Add event listener to the toggle button
     const toggleButton = document.getElementById('dark-mode-toggle');

@@ -20,6 +20,11 @@ def home():
     """Render the home page displaying project information."""
     return render_template("index.html", projects=Projects.select(), certificates=Certificates.select())
 
+@app.route("/resume")
+def resume():
+    """Render the resume page displaying experience and education information."""
+    return render_template("resume.html")
+
 
 @app.route("/download")
 def download_file():
