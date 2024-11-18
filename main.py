@@ -26,7 +26,7 @@ def resume():
     return render_template("resume.html")
 
 
-@app.route("/download")
+@app.route("/resume/download")
 def download_file():
     """Allow downloading the resume file."""
     path = "static/docs/johnombuya-resume.pdf"  # Specify the path to the resume file

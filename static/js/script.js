@@ -44,10 +44,14 @@ function scrollToSection(e, parentClass) {
 
     // If a valid target with the specified class is found
     if (target) {
-        e.preventDefault(); // Prevent default anchor behavior (e.g., immediate jump)
-
         // Get the href value which corresponds to the target section's ID
         const targetId = target.getAttribute('href');
+
+        if (targetId === '/') return; // Ignore the root URL
+
+        e.preventDefault(); // Prevent default anchor behavior (e.g., immediate jump)
+
+        console.log('TargetID: ', targetId);
 
         // Ensure the target element exists before scrolling
         const targetElement = document.querySelector(targetId);
