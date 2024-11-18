@@ -4,6 +4,10 @@ body {
     font-style: normal;
 }
 
+/* .lazy-img {
+    filter: blur(10px);
+} */
+
 /* Loader styles */
 .loader {
     position: fixed;
