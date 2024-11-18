@@ -1,74 +1,108 @@
-let loader;
-
-function loadNow(opacity) {
-    if (opacity <= 0) {
-        displayContent();
-    } else {
-        loader.style.opacity = opacity;
-        window.setTimeout(function () {
-            loadNow(opacity - 0.18);
-        }, 50);
-    }
-}
-
-function displayContent() {
-    loader.style.display = 'none';
-    document.getElementById('main-content').style.display = 'block';
-}
-
-// Function to toggle dark mode and save the preference in localStorage
-function toggleDarkMode() {
-    const root = document.documentElement;
-    const isDarkMode = root.classList.toggle('dark'); // Toggle 'dark' class on the root element
-    localStorage.setItem('theme', isDarkMode ? 'dark' : 'light'); // Save the theme preference
-    updateDarkModeIcon(isDarkMode); // Update the icon
-}
-
-// Function to update the dark mode icon based on the current theme
-function updateDarkModeIcon(isDarkMode) {
-    const darkModeIcon = document.getElementById('dark-mode-icon');
-    darkModeIcon.innerHTML = isDarkMode
-        ? `<svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 3v1m0 16v1m8-9h1M4 12H3m15.364-7.364l-.707.707M6.343 6.343l-.707.707M17.657 17.657l-.707-.707M6.343 17.657l-.707-.707" /></svg>` // Moon icon for dark mode
-        : `<svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 4.354a8.001 8.001 0 000 15.292A7 7 0 1112 4.354z" /></svg>`; // Sun icon for light mode
-}
-
-/**
- * Handles navigation clicks within the navigation bar to smooth scroll to target sections.
- *
- * @param {Event} e - The click event triggered by the user.
- * @param {string} parentClass - The class name to identify the clickable elements that trigger the scroll.
- */
-function scrollToSection(e, parentClass) {
-    // Determine if the clicked element or its parent has the 'parentClass' class
-    const target = e.target.closest(`.${parentClass}`);
-
-    // If a valid target with the specified class is found
-    if (target) {
-        // Get the href value which corresponds to the target section's ID
-        const targetId = target.getAttribute('href');
-
-        if (targetId === '/') return; // Ignore the root URL
-
-        e.preventDefault(); // Prevent default anchor behavior (e.g., immediate jump)
-
-        console.log('TargetID: ', targetId);
-
-        // Ensure the target element exists before scrolling
-        const targetElement = document.querySelector(targetId);
-        if (targetElement) {
-            targetElement.scrollIntoView({ behavior: 'smooth' }); // Smooth scroll to target element
-        } else {
-            console.warn(`No element found for ID: ${targetId}`);
+document.addEventListener('DOMContentLoaded', () => {
+    /**
+     * Fade-out loader function and display the main content upon completion.
+     * @param {number} opacity - The current opacity level to be decreased.
+     */
+    function loadNow(opacity) {
+        // Ensure loader is defined before operating
+        if (loader) {
+            if (opacity <= 0) {
+                displayContent();
+            } else {
+                loader.style.opacity = opacity;
+                window.setTimeout(() => loadNow(opacity - 0.18), 50);
+            }
         }
     }
-}
 
-document.addEventListener('DOMContentLoaded', () => {
-    // Once the DOM is loaded, hide the loader
+    /**
+     * Display the main content and hide the loader.
+     */
+    function displayContent() {
+        if (loader) {
+            loader.style.display = 'none';
+        }
+        const mainContent = document.getElementById('main-content');
+        if (mainContent) {
+            mainContent.style.display = 'block';
+        }
+    }
+
+    // Initialize loader
     loader = document.getElementById('loader');
-    loadNow(1);
+    if (loader) loadNow(1);
 
-    // On page load, set the theme based on localStorage or system preference
+    /**
+     * Toggle dark mode and save preference to localStorage.
+     */
+    function toggleDarkMode() {
+        const root = document.documentElement;
+        const isDarkMode = root.classList.toggle('dark'); // Toggle 'dark' class on the root element
+        localStorage.setItem('theme', isDarkMode ? 'dark' : 'light'); // Save preference
+        updateDarkModeIcon(isDarkMode);
+    }
+
+    /**
+     * Update the dark mode icon based on the current theme.
+     * @param {boolean} isDarkMode - Indicates if dark mode is active.
+     */
+    function updateDarkModeIcon(isDarkMode) {
+        const darkModeIcon = document.getElementById('dark-mode-icon');
+        if (darkModeIcon) {
+            darkModeIcon.innerHTML = isDarkMode
+                ? `<svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 3v1m0 16v1m8-9h1M4 12H3m15.364-7.364l-.707.707M6.343 6.343l-.707.707M17.657 17.657l-.707-.707M6.343 17.657l-.707-.707" /></svg>` // Moon icon
+                : `<svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 4.354a8.001 8.001 0 000 15.292A7 7 0 1112 4.354z" /></svg>`; // Sun icon
+        }
+    }
+
+    /**
+     * Handles navigation clicks within the navigation bar to smooth scroll to target sections.
+     *
+     * @param {Event} e - The click event triggered by the user.
+     * @param {string} parentClass - The class name to identify the clickable elements that trigger the scroll.
+     */
+    function scrollToSection(e, parentClass) {
+        // Determine if the clicked element or its parent has the 'parentClass' class
+        const target = e.target.closest(`.${parentClass}`);
+
+        // If a valid target with the specified class is found
+        if (target) {
+            // Get the href value which corresponds to the target section's ID
+            const targetId = target.getAttribute('href');
+
+            if (targetId === '/') return; // Ignore the root URL
+
+            e.preventDefault(); // Prevent default anchor behavior (e.g., immediate jump)
+
+            // Ensure the target element exists before scrolling
+            const targetElement = document.querySelector(targetId);
+            if (targetElement) {
+                targetElement.scrollIntoView({ behavior: 'smooth' }); // Smooth scroll to target element
+            } else {
+                console.warn(`No element found for ID: ${targetId}`);
+            }
+        }
+    }
+
+    /**
+     * Callback function to reveal observed sections when they intersect the viewport.
+     * @param {IntersectionObserverEntry[]} entries - Array of observed elements.
+     * @param {IntersectionObserver} observer - The IntersectionObserver instance.
+     */
+    function revealSection(entries, observer) {
+        const [entry] = entries;
+
+        // If the section is not intersecting, do nothing
+        if (!entry.isIntersecting) return;
+
+        // Make the section visible
+        entry.target.classList.remove('hidden');
+
+        // Stop observing once revealed
+        observer.unobserve(entry.target);
+    }
+
+    // Set the initial theme from localStorage or system preference
     const root = document.documentElement;
     const savedTheme = localStorage.getItem('theme');
     const isDarkMode = savedTheme === 'dark';
@@ -81,19 +115,35 @@ document.addEventListener('DOMContentLoaded', () => {
 
     updateDarkModeIcon(isDarkMode); // Set the initial icon state
 
-    // Event listener for navigation clicks
-    document
-        .querySelector('nav')
-        .addEventListener('click', (e) => scrollToSection(e, 'nav-real'));
+    // Reveal sections on scroll using IntersectionObserver
+    const allSections = document.querySelectorAll('.section');
 
-    // Event listener for dropdown menu clicks (fixing class selector to be correct)
-    document
-        .querySelector('#dropdown-menu')
-        .addEventListener('click', (e) => scrollToSection(e, 'dropdown-link'));
+    if ('IntersectionObserver' in window) {
+        const sectionObserver = new IntersectionObserver(revealSection, {
+            root: null, // Relative to the viewport
+            threshold: 0.15, // Trigger when 15% of the section is visible
+        });
 
-    // Add event listener to the toggle button
+        // allSections.forEach((section) => {
+        //     sectionObserver.observe(section);
+        //     section.classList.add('hidden');
+        // });
+    } else {
+        console.warn('IntersectionObserver is not supported by this browser.');
+        allSections.forEach((section) => section.classList.remove('hidden'));
+    }
+
+    // Event listener for navigation clicks (Example Selector)
+    const nav = document.querySelector('nav');
+    if (nav) {
+        nav.addEventListener('click', (e) => scrollToSection(e, 'nav-real'));
+    }
+
+    // Add event listener to toggle button for dark mode
     const toggleButton = document.getElementById('dark-mode-toggle');
-    toggleButton.addEventListener('click', toggleDarkMode);
+    if (toggleButton) {
+        toggleButton.addEventListener('click', toggleDarkMode);
+    }
 
     // Tab toggle logic (for switching between Projects and Certificates)
     const tabs = document.querySelectorAll('[role="tab"]');
