@@ -1,46 +1,4 @@
 document.addEventListener('DOMContentLoaded', () => {
-    // Set the initial theme from localStorage or system preference
-    const root = document.documentElement;
-    const savedTheme = localStorage.getItem('theme');
-    const isDarkMode = savedTheme === 'dark';
-
-    if (isDarkMode) {
-        root.classList.add('dark');
-    } else {
-        root.classList.remove('dark');
-    }
-
-    updateDarkModeIcon(isDarkMode); // Set the initial icon state
-
-    /**
-     * Toggle dark mode and save preference to localStorage.
-     */
-    function toggleDarkMode() {
-        const root = document.documentElement;
-        const isDarkMode = root.classList.toggle('dark'); // Toggle 'dark' class on the root element
-        localStorage.setItem('theme', isDarkMode ? 'dark' : 'light'); // Save preference
-        updateDarkModeIcon(isDarkMode);
-    }
-
-    /**
-     * Update the dark mode icon based on the current theme.
-     * @param {boolean} isDarkMode - Indicates if dark mode is active.
-     */
-    function updateDarkModeIcon(isDarkMode) {
-        const darkModeIcon = document.getElementById('dark-mode-icon');
-        if (darkModeIcon) {
-            darkModeIcon.innerHTML = isDarkMode
-                ? `<svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 3v1m0 16v1m8-9h1M4 12H3m15.364-7.364l-.707.707M6.343 6.343l-.707.707M17.657 17.657l-.707-.707M6.343 17.657l-.707-.707" /></svg>` // Moon icon
-                : `<svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 4.354a8.001 8.001 0 000 15.292A7 7 0 1112 4.354z" /></svg>`; // Sun icon
-        }
-    }
-
-    // Add event listener to toggle button for dark mode
-    const toggleButton = document.getElementById('dark-mode-toggle');
-    if (toggleButton) {
-        toggleButton.addEventListener('click', toggleDarkMode);
-    }
-
     /**
      * Fade-out loader function and display the main content upon completion.
      * @param {number} opacity - The current opacity level to be decreased.
@@ -73,6 +31,29 @@ document.addEventListener('DOMContentLoaded', () => {
     // Initialize loader
     loader = document.getElementById('loader');
     if (loader) loadNow(1);
+
+    /**
+     * Toggle dark mode and save preference to localStorage.
+     */
+    function toggleDarkMode() {
+        const root = document.documentElement;
+        const isDarkMode = root.classList.toggle('dark'); // Toggle 'dark' class on the root element
+        localStorage.setItem('theme', isDarkMode ? 'dark' : 'light'); // Save preference
+        updateDarkModeIcon(isDarkMode);
+    }
+
+    /**
+     * Update the dark mode icon based on the current theme.
+     * @param {boolean} isDarkMode - Indicates if dark mode is active.
+     */
+    function updateDarkModeIcon(isDarkMode) {
+        const darkModeIcon = document.getElementById('dark-mode-icon');
+        if (darkModeIcon) {
+            darkModeIcon.innerHTML = isDarkMode
+                ? `<svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 3v1m0 16v1m8-9h1M4 12H3m15.364-7.364l-.707.707M6.343 6.343l-.707.707M17.657 17.657l-.707-.707M6.343 17.657l-.707-.707" /></svg>` // Moon icon
+                : `<svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 4.354a8.001 8.001 0 000 15.292A7 7 0 1112 4.354z" /></svg>`; // Sun icon
+        }
+    }
 
     /**
      * Handles navigation clicks within the navigation bar to smooth scroll to target sections.
@@ -120,6 +101,19 @@ document.addEventListener('DOMContentLoaded', () => {
         // Stop observing once revealed
         observer.unobserve(entry.target);
     }
+
+    // Set the initial theme from localStorage or system preference
+    const root = document.documentElement;
+    const savedTheme = localStorage.getItem('theme');
+    const isDarkMode = savedTheme === 'dark';
+
+    if (isDarkMode) {
+        root.classList.add('dark');
+    } else {
+        root.classList.remove('dark');
+    }
+
+    updateDarkModeIcon(isDarkMode); // Set the initial icon state
 
     // // Lazy Loading Images
     // // Select all images on the page to apply lazy loading
@@ -183,6 +177,12 @@ document.addEventListener('DOMContentLoaded', () => {
     const nav = document.querySelector('nav');
     if (nav) {
         nav.addEventListener('click', (e) => scrollToSection(e, 'nav-real'));
+    }
+
+    // Add event listener to toggle button for dark mode
+    const toggleButton = document.getElementById('dark-mode-toggle');
+    if (toggleButton) {
+        toggleButton.addEventListener('click', toggleDarkMode);
     }
 
     // Tab toggle logic (for switching between Projects and Certificates)
