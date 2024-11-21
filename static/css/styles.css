@@ -81,10 +81,14 @@ body.dark .loader {
     position: relative;
 }
 .swiper-pagination-bullet {
-    background: #1d4ed8;
+    background: linear-gradient(135deg, #ff6ec4, #7873f5);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
 }
 .swiper-pagination-bullet-active {
-    background: #1d4ed8 !important;
+    background: linear-gradient(135deg, #ff6ec4, #7873f5) !important;
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
 }
 
 @keyframes float {
@@ -209,4 +213,10 @@ li {
     display: block;
     font-size: inherit;
     line-height: inherit;
+}
+
+.gradient-text {
+    background: linear-gradient(135deg, #ff6ec4, #7873f5);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
 }
