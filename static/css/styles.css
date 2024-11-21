@@ -183,3 +183,30 @@ body.dark .loader {
         right: 60% !important;
     }
 }
+
+/* Animation classes for sliding text */
+/* Keyframes for animation */
+@keyframes text-slide {
+    0%,
+    33% {
+        transform: translateY(0%);
+    }
+    50%,
+    83% {
+        transform: translateY(-33.33%);
+    }
+    100% {
+        transform: translateY(-66.66%);
+    }
+}
+
+.animation-wrapper {
+    display: block;
+    animation: text-slide 5s cubic-bezier(0.83, 0, 0.17, 1) infinite;
+}
+
+li {
+    display: block;
+    font-size: inherit;
+    line-height: inherit;
+}

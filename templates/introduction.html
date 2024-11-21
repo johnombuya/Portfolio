@@ -1,12 +1,39 @@
 <section
     id="hero"
-    class="section py-20 h-dvh content-center text-center backdrop-blur-2xl backdrop-opacity-100 dark:text-white text-white"
+    class="section py-20 h-dvh content-center text-center backdrop-blur-2xl backdrop-opacity-100 dark:text-white text-white relative h-screen flex items-center justify-center overflow-hidden"
 >
-    <h1
-        class="animate-text bg-gradient-to-r from-teal-500 via-purple-500 to-orange-500 bg-clip-text text-transparent mb-4 text-5xl font-black"
+    <!-- Content container with frosted glass effect -->
+    <div
+        class="relative z-10 max-w-2xl w-full mx-4 p-8 rounded-xl backdrop-blur-md bg-white/60 dark:bg-black/30 shadow-xl border border-white/20 dark:border-black/20 items-center backdrop-contrast-200"
     >
-        Hello, I'm John Ombuya
-    </h1>
+        <div
+            class="flex flex-col md:flex-row px-2 justify-between items-center font-extrabold text-xl md:text-1xl text-wrap-balance bg-clip-text"
+        >
+            <!-- Greeting Section -->
+            <span
+                class="text-black dark:text-white text-4xl font-black text-center md:text-left"
+            >
+                Hello, I’m John Ombuya
+            </span>
 
-    <p class="text-xl mb-8">Software & Web Developer</p>
+            <!-- Divider -->
+            <span
+                class="border w-full md:w-[2px] md:h-[50px] my-2 md:mx-4 sm:mb-10 sm:mt-10 bg-white dark:bg-white"
+            ></span>
+
+            <!-- Rotating Titles -->
+            <span
+                class="inline-flex flex-col h-[calc(1em*1.25)] md:h-[calc(1.5em*1.25)] overflow-hidden"
+            >
+                <ul
+                    class="text-left leading-tight animation-wrapper bg-gradient-to-r from-purple-500 to-indigo-600 font-bold bg-clip-text text-transparent"
+                >
+                    <li>Full-Stack Web Developer</li>
+                    <li>Mobile App Developer</li>
+                    <li>AI/ML Engineer</li>
+                    <li>Gamer at Heart</li>
+                </ul>
+            </span>
+        </div>
+    </div>
 </section>

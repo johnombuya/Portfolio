@@ -84,6 +84,8 @@ document.addEventListener('DOMContentLoaded', () => {
         // Determine if the clicked element or its parent has the 'parentClass' class
         const target = e.target.closest(`.${parentClass}`);
 
+        console.log('Target: ', target);
+
         // If a valid target with the specified class is found
         if (target) {
             // Get the href value which corresponds to the target section's ID
@@ -179,11 +181,18 @@ document.addEventListener('DOMContentLoaded', () => {
         allSections.forEach((section) => section.classList.remove('hidden'));
     }
 
-    // Event listener for navigation clicks (Example Selector)
+    // Event listener for navigation clicks
     const nav = document.querySelector('nav');
+    const dropdownMenu = document.querySelector('#dropdown-menu');
+
     if (nav) {
         nav.addEventListener('click', (e) => scrollToSection(e, 'nav-real'));
     }
+
+    if (dropdownMenu)
+        dropdownMenu.addEventListener('click', (e) =>
+            scrollToSection(e, 'dropdown-link')
+        );
 
     // Tab toggle logic (for switching between Projects and Certificates)
     const tabs = document.querySelectorAll('[role="tab"]');
