@@ -94,7 +94,12 @@ document.addEventListener('DOMContentLoaded', () => {
             // Get the href value which corresponds to the target section's ID
             const targetId = target.getAttribute('href');
 
-            if (targetId === '/') return; // Ignore the root URL
+            if (
+                targetId === '/' ||
+                targetId === '/resume' ||
+                targetId === '/resume/download'
+            )
+                return; // Ignore the root, resume and download resume URLs
 
             e.preventDefault(); // Prevent default anchor behavior (e.g., immediate jump)
 
