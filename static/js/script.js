@@ -126,45 +126,45 @@ document.addEventListener('DOMContentLoaded', () => {
         observer.unobserve(entry.target);
     }
 
-    // // Lazy Loading Images
-    // // Select all images on the page to apply lazy loading
-    // const allImgs = document.querySelectorAll('img'); // Target images
-    // // const allImgs = document.querySelectorAll('img[data-src]'); // Target images with data-src attribute
+    // Lazy Loading Images
+    // Select all images on the page to apply lazy loading
+    const allImgs = document.querySelectorAll('img'); // Target images
+    // const allImgs = document.querySelectorAll('img[data-src]'); // Target images with data-src attribute
 
-    // /**
-    //  * Callback function for IntersectionObserver that loads images when they are in the viewport.
-    //  * @param {Array} entries - Array of observed elements and their states.
-    //  * @param {IntersectionObserver} observer - The observer instance observing the elements.
-    //  */
-    // function loadImage(entries, observer) {
-    //     const [entry] = entries; // Destructure to get the first entry
+    /**
+     * Callback function for IntersectionObserver that loads images when they are in the viewport.
+     * @param {Array} entries - Array of observed elements and their states.
+     * @param {IntersectionObserver} observer - The observer instance observing the elements.
+     */
+    function loadImage(entries, observer) {
+        const [entry] = entries; // Destructure to get the first entry
 
-    //     if (!entry.isIntersecting) return; // Exit function if the image is not intersecting
+        if (!entry.isIntersecting) return; // Exit function if the image is not intersecting
 
-    //     // Replace src with data-src for loading the high-resolution image
-    //     // entry.target.src = entry.target.dataset.src;
+        // Replace src with data-src for loading the high-resolution image
+        // entry.target.src = entry.target.dataset.src;
 
-    //     // Remove blurry filter after image has loaded
-    //     entry.target.addEventListener('load', function () {
-    //         entry.target.classList.remove('lazy-img');
-    //     });
+        // Remove blurry filter after image has loaded
+        entry.target.addEventListener('load', function () {
+            entry.target.classList.remove('lazy-img');
+        });
 
-    //     // Stop observing the current image as it has been loaded
-    //     observer.unobserve(entry.target);
-    // }
+        // Stop observing the current image as it has been loaded
+        observer.unobserve(entry.target);
+    }
 
-    // // Create an IntersectionObserver to observe images for lazy loading
-    // const imageObserver = new IntersectionObserver(loadImage, {
-    //     root: null, // Use the viewport as the root
-    //     threshold: 0.15, // Image will start loading when it is 15% visible
-    //     rootMargin: '200px', // Preload images 200px before they come into view
-    // });
+    // Create an IntersectionObserver to observe images for lazy loading
+    const imageObserver = new IntersectionObserver(loadImage, {
+        root: null, // Use the viewport as the root
+        threshold: 0.15, // Image will start loading when it is 15% visible
+        rootMargin: '200px', // Preload images 200px before they come into view
+    });
 
-    // // Apply the observer to each image and add lazy loading class
-    // allImgs.forEach((img) => {
-    //     imageObserver.observe(img);
-    //     img.classList.add('lazy-img');
-    // });
+    // Apply the observer to each image and add lazy loading class
+    allImgs.forEach((img) => {
+        imageObserver.observe(img);
+        img.classList.add('lazy-img');
+    });
 
     // Reveal sections on scroll using IntersectionObserver
     const allSections = document.querySelectorAll('.section');
