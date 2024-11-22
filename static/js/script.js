@@ -87,8 +87,6 @@ document.addEventListener('DOMContentLoaded', () => {
         // Determine if the clicked element or its parent has the 'parentClass' class
         const target = e.target.closest(`.${parentClass}`);
 
-        console.log('Target: ', target);
-
         // If a valid target with the specified class is found
         if (target) {
             // Get the href value which corresponds to the target section's ID
@@ -258,6 +256,18 @@ document.addEventListener('DOMContentLoaded', () => {
                 spaceBetween: 0,
             },
         },
+    });
+
+    // Scroll the active slide into view after slide change or transition end
+    swiper.on('slideChangeTransitionEnd', () => {
+        const activeSlide = swiper.slides[swiper.activeIndex];
+        if (activeSlide) {
+            activeSlide.scrollIntoView({
+                behavior: 'smooth',
+                block: 'center',
+                inline: 'center',
+            });
+        }
     });
 
     const swiperDrawer = new Swiper('.vertical-slide-carousel', {
