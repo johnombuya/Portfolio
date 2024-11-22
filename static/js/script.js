@@ -2,7 +2,10 @@ document.addEventListener('DOMContentLoaded', () => {
     // Set the initial theme from localStorage or system preference
     const root = document.documentElement;
     const savedTheme = localStorage.getItem('theme');
-    const isDarkMode = savedTheme === 'dark';
+    const isDarkMode =
+        savedTheme === 'dark' ||
+        (!savedTheme &&
+            window.matchMedia('(prefers-color-scheme: dark)').matches);
 
     if (isDarkMode) {
         root.classList.add('dark');
