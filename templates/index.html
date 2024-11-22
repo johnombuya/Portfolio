@@ -45,10 +45,9 @@
         />
 
         <!-- Custom CSS Styles -->
-        <link
-            rel="stylesheet"
-            href="{{ url_for('static', filename='css/styles.css') }}"
-        />
+        {% assets "main_css" %}
+        <link rel="stylesheet" href="{{ ASSET_URL }}" />
+        {% endassets %}
 
         <!-- Swiper CSS and JS Files -->
         <link
@@ -64,10 +63,9 @@
         <script src="https://cdn.tailwindcss.com"></script>
 
         <!-- Custom JavaScript -->
-        <script
-            defer
-            src="{{ url_for('static', filename='js/script.js') }}"
-        ></script>
+        {% assets "main_js" %}
+        <script defer type="text/javascript" src="{{ ASSET_URL }}"></script>
+        {% endassets %}
 
         <!-- Viewer js -->
         <!-- <script
