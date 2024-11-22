@@ -111,81 +111,49 @@ document.addEventListener('DOMContentLoaded', () => {
         }
     }
 
+    // Lazy Loading Images with Blur Overlay
+
     /**
-     * Callback function to reveal observed sections when they intersect the viewport.
-     * @param {IntersectionObserverEntry[]} entries - Array of observed elements.
-     * @param {IntersectionObserver} observer - The IntersectionObserver instance.
+     * Lazy load all images on the page.
+     * A blur overlay is applied initially and removed when the image is fully loaded.
      */
-    function revealSection(entries, observer) {
-        const [entry] = entries;
 
-        // If the section is not intersecting, do nothing
-        if (!entry.isIntersecting) return;
-
-        // Make the section visible
-        entry.target.classList.remove('hidden');
-
-        // Stop observing once revealed
-        observer.unobserve(entry.target);
-    }
-
-    // Lazy Loading Images
-    // Select all images on the page to apply lazy loading
-    const allImgs = document.querySelectorAll('img'); // Target images
-    // const allImgs = document.querySelectorAll('img[data-src]'); // Target images with data-src attribute
+    // Select all images on the page
+    const allImgs = document.querySelectorAll('img.lazy-img');
 
     /**
-     * Callback function for IntersectionObserver that loads images when they are in the viewport.
+     * Callback function for IntersectionObserver.
+     * Adds a listener to remove blur overlay once the image is loaded.
      * @param {Array} entries - Array of observed elements and their states.
      * @param {IntersectionObserver} observer - The observer instance observing the elements.
      */
-    function loadImage(entries, observer) {
-        const [entry] = entries; // Destructure to get the first entry
+    function handleImageLazyLoad(entries, observer) {
+        entries.forEach((entry) => {
+            if (!entry.isIntersecting) return; // Skip if the image is not yet visible in the viewport
 
-        if (!entry.isIntersecting) return; // Exit function if the image is not intersecting
+            const img = entry.target;
 
-        // Replace src with data-src for loading the high-resolution image
-        // entry.target.src = entry.target.dataset.src;
+            // Add a listener to remove blur once the image is fully loaded
+            img.addEventListener('load', function () {
+                img.classList.remove('lazy-img'); // Remove the blur class
+            });
 
-        // Remove blurry filter after image has loaded
-        entry.target.addEventListener('load', function () {
-            entry.target.classList.remove('lazy-img');
+            // Stop observing the current image
+            observer.unobserve(img);
         });
-
-        // Stop observing the current image as it has been loaded
-        observer.unobserve(entry.target);
     }
 
     // Create an IntersectionObserver to observe images for lazy loading
-    const imageObserver = new IntersectionObserver(loadImage, {
+    const imageObserver = new IntersectionObserver(handleImageLazyLoad, {
         root: null, // Use the viewport as the root
-        threshold: 0.15, // Image will start loading when it is 15% visible
+        threshold: 0.15, // Start loading images when they are 15% visible in the viewport
         rootMargin: '200px', // Preload images 200px before they come into view
     });
 
-    // Apply the observer to each image and add lazy loading class
+    // Apply the observer to each image on the page
     allImgs.forEach((img) => {
         imageObserver.observe(img);
-        img.classList.add('lazy-img');
     });
-
-    // Reveal sections on scroll using IntersectionObserver
-    const allSections = document.querySelectorAll('.section');
-
-    if ('IntersectionObserver' in window) {
-        const sectionObserver = new IntersectionObserver(revealSection, {
-            root: null, // Relative to the viewport
-            threshold: 0.15, // Trigger when 15% of the section is visible
-        });
-
-        // allSections.forEach((section) => {
-        //     sectionObserver.observe(section);
-        //     section.classList.add('hidden');
-        // });
-    } else {
-        // console.warn('IntersectionObserver is not supported by this browser.');
-        allSections.forEach((section) => section.classList.remove('hidden'));
-    }
 
     // Event listener for navigation clicks
     const nav = document.querySelector('nav');

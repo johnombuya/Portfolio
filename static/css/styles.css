@@ -4,9 +4,16 @@ body {
     font-style: normal;
 }
 
-/* .lazy-img {
-    filter: blur(10px);
-} */
+/* Apply initial blur to images */
+img.lazy-img {
+    filter: blur(10px); /* Adjust the blur intensity */
+    transition: filter 0.3s ease-in-out; /* Smooth transition for blur removal */
+}
+
+/* Ensure the image is sharp once loaded */
+img:not(.lazy-img) {
+    filter: none;
+}
 
 /* Loader styles */
 .loader {
