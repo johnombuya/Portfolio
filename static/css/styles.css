@@ -202,7 +202,7 @@ body.dark .loader {
     animation: text-slide 7s cubic-bezier(0.83, 0, 0.17, 1) infinite;
 }
 
-li {
+.sliding-text-item {
     display: block;
     font-size: inherit;
     line-height: inherit;

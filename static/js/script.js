@@ -254,19 +254,6 @@ document.addEventListener('DOMContentLoaded', () => {
         },
     });
 
-    // Create a new instance of Viewer
-    const gallery = new Viewer(document.getElementById('certificate_imgs'), {
-        // Optional configuration options (refer to the Viewer.js documentation)
-        navbar: true,
-        toolbar: true,
-        tooltip: true,
-        fullscreen: false,
-        movable: true,
-        zoomable: true,
-        scalable: true,
-        transition: true,
-    });
-
     // Set current age in about me section
     let ageText = document.querySelector('.age-text');
     ageText.textContent = new Date().getFullYear() - 2002;
