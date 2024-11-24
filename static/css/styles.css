@@ -36,7 +36,7 @@ img:not(.lazy-img) {
 }
 
 /* Dark theme loader styles */
-body.dark .loader {
+html.dark .loader {
     background-color: black; /* Change background color for dark theme */
 }
 
