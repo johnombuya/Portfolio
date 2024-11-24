@@ -133,8 +133,6 @@ document.addEventListener('DOMContentLoaded', () => {
         // Determine if the clicked element or its parent has the 'parentClass' class
         const target = e.target.closest(`.${parentClass}`);
 
-        console.log('Target: ', target);
-
         // If a valid target with the specified class is found
         if (target) {
             // Get the href value which corresponds to the target section's ID
