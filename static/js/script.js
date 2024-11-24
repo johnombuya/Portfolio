@@ -1,4 +1,27 @@
 document.addEventListener('DOMContentLoaded', () => {
+    /**
+     * Toggle dark mode and save preference to localStorage.
+     */
+    function toggleDarkMode() {
+        const root = document.documentElement;
+        const isDarkMode = root.classList.toggle('dark'); // Toggle 'dark' class on the root element
+        localStorage.setItem('theme', isDarkMode ? 'dark' : 'light'); // Save preference
+        updateDarkModeIcon(isDarkMode);
+    }
+
+    /**
+     * Update the dark mode icon based on the current theme.
+     * @param {boolean} isDarkMode - Indicates if dark mode is active.
+     */
+    function updateDarkModeIcon(isDarkMode) {
+        const darkModeIcons = document.querySelectorAll('.dark-mode-icon'); // Select all dark mode icons
+        darkModeIcons.forEach((icon) => {
+            icon.innerHTML = isDarkMode
+                ? `<svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 3v1m0 16v1m8-9h1M4 12H3m15.364-7.364l-.707.707M6.343 6.343l-.707.707M17.657 17.657l-.707-.707M6.343 17.657l-.707-.707" /></svg>` // Moon icon
+                : `<svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 4.354a8.001 8.001 0 000 15.292A7 7 0 1112 4.354z" /></svg>`; // Sun icon
+        });
+    }
+
     // Set the initial theme from localStorage or system preference
     const root = document.documentElement;
     const savedTheme = localStorage.getItem('theme');
@@ -15,34 +38,11 @@ document.addEventListener('DOMContentLoaded', () => {
 
     updateDarkModeIcon(isDarkMode); // Set the initial icon state
 
-    /**
-     * Toggle dark mode and save preference to localStorage.
-     */
-    function toggleDarkMode() {
-        const root = document.documentElement;
-        const isDarkMode = root.classList.toggle('dark'); // Toggle 'dark' class on the root element
-        localStorage.setItem('theme', isDarkMode ? 'dark' : 'light'); // Save preference
-        updateDarkModeIcon(isDarkMode);
-    }
-
-    /**
-     * Update the dark mode icon based on the current theme.
-     * @param {boolean} isDarkMode - Indicates if dark mode is active.
-     */
-    function updateDarkModeIcon(isDarkMode) {
-        const darkModeIcon = document.getElementById('dark-mode-icon');
-        if (darkModeIcon) {
-            darkModeIcon.innerHTML = isDarkMode
-                ? `<svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 3v1m0 16v1m8-9h1M4 12H3m15.364-7.364l-.707.707M6.343 6.343l-.707.707M17.657 17.657l-.707-.707M6.343 17.657l-.707-.707" /></svg>` // Moon icon
-                : `<svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 4.354a8.001 8.001 0 000 15.292A7 7 0 1112 4.354z" /></svg>`; // Sun icon
-        }
-    }
-
-    // Add event listener to toggle button for dark mode
-    const toggleButton = document.getElementById('dark-mode-toggle');
-    if (toggleButton) {
-        toggleButton.addEventListener('click', toggleDarkMode);
-    }
+    // Add event listeners to all dark mode toggle buttons
+    const toggleButtons = document.querySelectorAll('.dark-mode-toggle');
+    toggleButtons.forEach((button) => {
+        button.addEventListener('click', toggleDarkMode);
+    });
 
     /**
      * Fade-out loader function and display the main content upon completion.
@@ -76,40 +76,6 @@ document.addEventListener('DOMContentLoaded', () => {
     // Initialize loader
     loader = document.getElementById('loader');
     if (loader) loadNow(1);
-
-    /**
-     * Handles navigation clicks within the navigation bar to smooth scroll to target sections.
-     *
-     * @param {Event} e - The click event triggered by the user.
-     * @param {string} parentClass - The class name to identify the clickable elements that trigger the scroll.
-     */
-    function scrollToSection(e, parentClass) {
-        // Determine if the clicked element or its parent has the 'parentClass' class
-        const target = e.target.closest(`.${parentClass}`);
-
-        // If a valid target with the specified class is found
-        if (target) {
-            // Get the href value which corresponds to the target section's ID
-            const targetId = target.getAttribute('href');
-
-            if (
-                targetId === '/' ||
-                targetId === '/resume' ||
-                targetId === '/resume/download'
-            )
-                return; // Ignore the root, resume and download resume URLs
-
-            e.preventDefault(); // Prevent default anchor behavior (e.g., immediate jump)
-
-            // Ensure the target element exists before scrolling
-            const targetElement = document.querySelector(targetId);
-            if (targetElement) {
-                targetElement.scrollIntoView({ behavior: 'smooth' }); // Smooth scroll to target element
-            } else {
-                // console.warn(`No element found for ID: ${targetId}`);
-            }
-        }
-    }
 
     // Lazy Loading Images with Blur Overlay
 
@@ -154,6 +120,44 @@ document.addEventListener('DOMContentLoaded', () => {
     allImgs.forEach((img) => {
         imageObserver.observe(img);
     });
+
+    /**
+     * Handles navigation clicks within the navigation bar to smooth scroll to target sections.
+     *
+     * @param {Event} e - The click event triggered by the user.
+     * @param {string} parentClass - The class name to identify the clickable elements that trigger the scroll.
+     */
+    function scrollToSection(e, parentClass) {
+        if (e.target.closest('.dark-mode-toggle')) return;
+
+        // Determine if the clicked element or its parent has the 'parentClass' class
+        const target = e.target.closest(`.${parentClass}`);
+
+        console.log('Target: ', target);
+
+        // If a valid target with the specified class is found
+        if (target) {
+            // Get the href value which corresponds to the target section's ID
+            const targetId = target.getAttribute('href');
+
+            if (
+                targetId === '/' ||
+                targetId === '/resume' ||
+                targetId === '/resume/download'
+            )
+                return; // Ignore the root, resume and download resume URLs
+
+            e.preventDefault(); // Prevent default anchor behavior (e.g., immediate jump)
+
+            // Ensure the target element exists before scrolling
+            const targetElement = document.querySelector(targetId);
+            if (targetElement) {
+                targetElement.scrollIntoView({ behavior: 'smooth' }); // Smooth scroll to target element
+            } else {
+                // console.warn(`No element found for ID: ${targetId}`);
+            }
+        }
+    }
 
     // Event listener for navigation clicks
     const nav = document.querySelector('nav');
