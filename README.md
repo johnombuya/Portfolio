@@ -4,9 +4,8 @@ This is a Flask-based web application for managing and showcasing a portfolio we
 
 ## Features
 
--   **Home Page**: Displays information about various projects.
--   **About Page**: Provides information about the portfolio owner.
--   **Contact Section**: Offers contact information.
+-   **Home Page**: Displays information about various projects and about the portfolio owner.
+-   **View Resume**: Allows visitors to view the portfolio owner's experience and education.
 -   **Resume Download**: Allows visitors to download the portfolio owner's resume.
 
 ## Installation
