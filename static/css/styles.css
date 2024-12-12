@@ -54,6 +54,7 @@ html.dark .loader {
 .centered-slide-carousel {
     width: 100%;
     max-width: 100%; /* Avoid any width constraints */
+    margin: 0 auto; /* Center the container */
 }
 
 .centered-slide-carousel .swiper-slide {
@@ -67,8 +68,21 @@ html.dark .loader {
 #certificates-carousel {
     margin-left: auto;
     margin-right: auto;
-    width: 75%;
+    width: 90%; /* Increased default width for smaller screens */
     max-width: 100%;
+}
+
+/* Adjust card width and responsiveness for smaller screens */
+@media (max-width: 768px) {
+    .centered-slide-carousel .swiper-slide {
+        flex-direction: column; /* Stack items vertically for smaller screens */
+        padding: 1rem; /* Add spacing */
+    }
+
+    #projects-carousel,
+    #certificates-carousel {
+        width: 95%; /* Wider cards on smaller screens */
+    }
 }
 
 /* Control the width of the Swiper container on larger screens */
@@ -77,8 +91,14 @@ html.dark .loader {
         width: 100vw;
         height: auto;
     }
+
+    #projects-carousel,
+    #certificates-carousel {
+        width: 75%; /* Maintain compactness for larger screens */
+    }
 }
 
+/* Style Swiper Wrapper */
 .swiper-wrapper {
     width: 100%;
     height: max-content !important;
@@ -87,6 +107,8 @@ html.dark .loader {
     transition-timing-function: linear !important;
     position: relative;
 }
+
+/* Swiper Pagination Bullets */
 .swiper-pagination-bullet {
     background: linear-gradient(135deg, #ff6ec4, #7873f5);
     -webkit-background-clip: text;
@@ -96,6 +118,33 @@ html.dark .loader {
     background: linear-gradient(135deg, #ff6ec4, #7873f5) !important;
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
+}
+
+/* General Card Styles */
+.shadow-md {
+    max-width: 100%; /* Allow cards to stretch */
+    width: 100%; /* Ensure cards take up the full Swiper slide width */
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    transition: transform 0.3s, box-shadow 0.3s;
+}
+
+.shadow-md:hover {
+    transform: scale(1.05); /* Slight zoom effect on hover */
+    box-shadow: 0 6px 8px rgba(0, 0, 0, 0.2);
+}
+
+/* Adjust cards for different screen sizes */
+@media (max-width: 576px) {
+    .shadow-md {
+        padding: 1rem; /* Reduce padding on smaller screens */
+    }
+}
+
+@media (min-width: 768px) and (max-width: 1024px) {
+    #projects-carousel,
+    #certificates-carousel {
+        width: 85%; /* Slightly smaller width for tablets */
+    }
 }
 
 @keyframes float {
@@ -196,7 +245,6 @@ html.dark .loader {
 }
 
 /* Animation classes for sliding text */
-
 .animation-wrapper {
     display: block;
     animation: text-slide 7s cubic-bezier(0.83, 0, 0.17, 1) infinite;
@@ -206,6 +254,7 @@ html.dark .loader {
     display: block;
     font-size: inherit;
     line-height: inherit;
+    white-space: nowrap; /* Ensure text doesn't break onto multiple lines */
 }
 
 /* Keyframes for animation */
