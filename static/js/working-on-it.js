@@ -38,16 +38,3 @@ if ('IntersectionObserver' in window) {
     // Fallback: Make all sections visible immediately
     allSections.forEach((section) => section.classList.remove('hidden'));
 }
-
-// Create a new instance of Viewer
-const gallery = new Viewer(document.getElementById('certificate_imgs'), {
-    // Optional configuration options (refer to the Viewer.js documentation)
-    navbar: true,
-    toolbar: true,
-    tooltip: true,
-    fullscreen: false,
-    movable: true,
-    zoomable: true,
-    scalable: true,
-    transition: true,
-});
