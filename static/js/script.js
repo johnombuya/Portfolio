@@ -268,11 +268,19 @@ document.addEventListener('DOMContentLoaded', () => {
         transition: true,
     });
 
-    // Set current age in about me section
-    let ageText = document.querySelector('.age-text');
-    ageText.textContent = new Date().getFullYear() - 2002;
+    // Create function to update years
+    function updateYears() {
+        // Set current age in about me section
+        let ageText = document.querySelector('.age-text');
+        if (ageText) {
+            ageText.textContent = new Date().getFullYear() - 2002;
+        }
 
-    // Set current year in footer section
-    let footerYearText = document.querySelector('.footer-year-text');
-    footerYearText.textContent = new Date().getFullYear();
+        // Set current year in footer section
+        let footerYearElement = document.querySelector('.footer-year-text');
+        if (footerYearElement)
+            footerYearElement.textContent = new Date().getFullYear();
+    }
+
+    updateYears();
 });
